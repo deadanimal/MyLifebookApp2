@@ -10,9 +10,12 @@
         </ion-content>
     </ion-page>
 </template>
-<script>
 
-export default {
-    name: "BlankView"
+<script setup lang="ts" name="BlankView">
+
+
+function goBack() {
+    console.log("goBack"); // current form values
 }
+
 </script>
