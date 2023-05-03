@@ -69,7 +69,7 @@ export const useAuthStore = defineStore({
             this.loading = true
             try {
 
-                await axios.delete('http://127.0.0.1:8001/api/logout', {
+                await axios.delete('https://memoir.my/api/logout', {
                     headers: {
                         Authorization: 'Bearer ' + this.userToken
                     }
