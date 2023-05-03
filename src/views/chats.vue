@@ -1,13 +1,9 @@
-/* eslint-disable */
+
 <template>
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-buttons slot="start">
-                    <ion-button>
-                        Chat
-                    </ion-button>
-                </ion-buttons>
+                <ion-title>Chat</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
@@ -33,7 +29,7 @@ export default defineComponent({
     name: 'ChatsView',
 
     components: {
-        IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons
+        IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons, IonTitle
     },
 
     data() {

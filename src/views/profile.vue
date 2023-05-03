@@ -3,29 +3,21 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-buttons slot="start">
+                <ion-title>Profile</ion-title>
+                <!-- <ion-buttons slot="start">
                     <ion-button>
-                        Profile
+                        Home
                     </ion-button>
                 </ion-buttons>
                 <ion-buttons slot="end">
-                    <ion-button @click="logout">
+                    <ion-button href="/login">
                         <ion-icon :icon="exitOutline" size="large" />
                     </ion-button>
-                </ion-buttons>
+                </ion-buttons> -->
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
-            <ion-header collapse="condense">
-                <ion-toolbar>
-                    <ion-title size="large">Profile</ion-title>
-                </ion-toolbar>
-            </ion-header>
 
-            val: {{ lol }}
-
-            <ion-button @click="increase()">Go Back </ion-button>
-            <ion-button @click="reduce()">reduce</ion-button>
         </ion-content>
     </ion-page>
 </template>
@@ -41,10 +33,13 @@ import { useAuthStore } from "../stores/auth";
 export default defineComponent({
     name: 'ProfileView',
 
+    components: {
+        IonPage, IonHeader, IonToolbar, IonContent, IonTitle
+    },
+
     data() {
         return {
-            exitOutline,
-            lol: 0
+            
         }
     },
 

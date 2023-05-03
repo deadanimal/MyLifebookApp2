@@ -2,7 +2,8 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-buttons slot="start">
+                <ion-title>Home</ion-title>
+                <!-- <ion-buttons slot="start">
                     <ion-button>
                         Home
                     </ion-button>
@@ -11,15 +12,11 @@
                     <ion-button href="/login">
                         <ion-icon :icon="exitOutline" size="large" />
                     </ion-button>
-                </ion-buttons>
+                </ion-buttons> -->
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
-            <ion-header collapse="condense">
-                <ion-toolbar>
-                    <ion-title size="large">Home</ion-title>
-                </ion-toolbar>
-            </ion-header>
+
         </ion-content>
     </ion-page>
 </template>
