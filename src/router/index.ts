@@ -15,11 +15,19 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/chats",
         component: () => import("@/views/chats.vue"),
-      },       
+      },  
+      {
+        path: "/chats/:chatId",
+        component: () => import("@/views/chat.vue"),
+      },            
       {
         path: "/records",
         component: () => import("@/views/records.vue"),
       }, 
+      {
+        path: "/records/:recordId",
+        component: () => import("@/views/record.vue"),
+      },       
       {
         path: "/profile",
         component: () => import("@/views/profile.vue"),

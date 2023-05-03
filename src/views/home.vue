@@ -16,7 +16,8 @@
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
-
+            list of asks <br/>
+            list of records <br/>
         </ion-content>
     </ion-page>
 </template>
