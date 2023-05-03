@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'my.memoir.app',
-  appName: 'starter-ionic',
+  appName: 'Memoir',
   webDir: 'dist',
   bundledWebRuntime: false
 };
