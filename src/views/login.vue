@@ -92,8 +92,11 @@ function onInvalidSubmit({ values, errors, results }: { values: any, errors: any
 }
 
 const onSubmit = handleSubmit((values) => {
+    
     console.log(values);
     router.push('/home');
+
 }, onInvalidSubmit);
+
 
 </script>
