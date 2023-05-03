@@ -13,7 +13,17 @@
                 <ion-label>Record</ion-label>
             </ion-tab-button>
 
-            <ion-tab-button tab="tab3" href="/profile">
+            <ion-tab-button tab="tab3">
+                <ion-icon :icon="ellipse" />
+                <ion-label>Aide</ion-label>
+            </ion-tab-button>            
+
+            <ion-tab-button tab="tab4" href="/chats">
+                <ion-icon :icon="ellipse" />
+                <ion-label>Chat</ion-label>
+            </ion-tab-button>            
+
+            <ion-tab-button tab="tab5" href="/profile">
                 <ion-icon :icon="square" />
                 <ion-label>Profile</ion-label>
             </ion-tab-button>

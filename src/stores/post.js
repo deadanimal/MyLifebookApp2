@@ -9,7 +9,7 @@ export const usePostStore = defineStore({
     post: null,
     loading: false,
     error: null,
-    lol: useStorage('lol', 0)
+    lol: 0
   }),
   getters: {
     getPostsPerAuthor: (state) => {

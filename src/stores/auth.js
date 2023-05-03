@@ -12,8 +12,8 @@ export const useAuthStore = defineStore({
 
         userId: useStorage('userId', ''),
         profileId: useStorage('profileId', ''),
-        isAuthenticated: useStorage('authenticated', false),
-        userToken: useStorage('token', '')
+        isAuthenticated: useStorage('isAuthenticated', false),
+        userToken: useStorage('userToken', ''),
 
         name: useStorage('name', ''),
         username: useStorage('username', ''),
@@ -23,14 +23,14 @@ export const useAuthStore = defineStore({
     actions: {
 
         async login(email, password) {
-            
+
             this.loading = true;
             try {
                 await axios.post('https://memoir.my/api/login', {
-                    email: email, 
-                    password: password, 
+                    email: email,
+                    password: password,
                     device_name: '123'
-                }).then((response)=> {
+                }).then((response) => {
                     if (response['data']['token']) {
                         console.log(response['data']['token']);
                         this.isAuthenticated = true;
@@ -49,8 +49,8 @@ export const useAuthStore = defineStore({
                         this.isAuthenticated = false;
                         this.userId = '';
                         this.profileId = ''
-                        this.userToken = '';    
-                        
+                        this.userToken = '';
+
                         this.name = '';
                         this.username = '';
                         this.email = '';
@@ -68,21 +68,20 @@ export const useAuthStore = defineStore({
         async logout() {
             this.loading = true
             try {
-                await fetch("https://memoir.my/api/logout", {
-                    method: 'POST',
+
+                await axios.delete('http://127.0.0.1:8001/api/logout', {
                     headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'Authentication': 'Bearer ' + this.token
-                    },
+                        Authorization: 'Bearer ' + this.userToken
+                    }
                 })
-                    .then((response) => {                                            
+                    .then((response) => {
+                        console.log(response)
                         var responseJson = response.json()
-                        console.log(responseJson)    
+                        console.log(responseJson)
                         if (responseJson['status'] == 'OK') {
-                            
+
                             localStorage.clear();
-                            
+
                             this.isAuthenticated = false;
                             this.userId = '';
                             this.profileId = ''
