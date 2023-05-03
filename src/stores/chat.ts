@@ -21,9 +21,8 @@ export const useChatStore = defineStore({
     actions: {
 
         async listChats() {
-            console.log('listChats');
+            console.log('chatStore: listChats');
             const url = "https://memoir.my/api/chats";
-            console.log(url);
 
             this.loading = true;
             try {
@@ -33,9 +32,7 @@ export const useChatStore = defineStore({
                     }
                 })
                     .then((response:any) => {
-                        console.log(response)
-                        const responseJson = response.json()
-                        console.log(responseJson)
+                        this.chats = response['data']['chats'];
                     })
             } catch (error:any) {
                 this.error = error;

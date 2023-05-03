@@ -12,6 +12,10 @@
         </ion-header>
         <ion-content :fullscreen="true">
 
+            <ion-item href="#" v-for="(chat, chatIndex) in chatStore.chats" v-bind:key="chat['uuid']">
+                <ion-label>{{ chatIndex }}. {{ chat['raw_message'] }}</ion-label>
+            </ion-item>
+
 
         </ion-content>
     </ion-page>
@@ -19,7 +23,7 @@
   
 <script lang="ts">
 /* eslint-disable */
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent } from '@ionic/vue';
 import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useChatStore } from "../stores/chat";
@@ -27,6 +31,10 @@ import { useChatStore } from "../stores/chat";
 
 export default defineComponent({
     name: 'ChatsView',
+
+    components: {
+        IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons
+    },
 
     data() {
         return {
@@ -41,8 +49,6 @@ export default defineComponent({
     },
 
     mounted() {
-        console.log('ok')
-        console.log(import.meta.env.VUE_APP_API_URL)
         this.listChats();
         this.chats = this.chatStore.chats;
     },
