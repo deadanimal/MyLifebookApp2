@@ -1,6 +1,7 @@
+/* eslint-disable */
 import { defineStore } from 'pinia';
 import { useStorage } from '@vueuse/core';
-import axios from "axios"
+import axios from "axios";
 import router from '../router/index';
 
 export const useAuthStore = defineStore({
@@ -22,11 +23,11 @@ export const useAuthStore = defineStore({
 
     actions: {
 
-        async login(email, password) {
+        async login(email: string, password: string) {
 
             this.loading = true;
             try {
-                await axios.post('https://memoir.my/api/login', {
+                await axios.post("https://memoir.my/api/login", {
                     email: email,
                     password: password,
                     device_name: '123'
@@ -57,7 +58,7 @@ export const useAuthStore = defineStore({
                     }
                 })
 
-            } catch (error) {
+            } catch (error:any) {
                 console.log('error: ', error);
                 this.error = error;
             } finally {
@@ -69,12 +70,12 @@ export const useAuthStore = defineStore({
             this.loading = true
             try {
 
-                await axios.delete('https://memoir.my/api/logout', {
+                await axios.delete("https://memoir.my/api/logout", {
                     headers: {
                         Authorization: 'Bearer ' + this.userToken
                     }
                 })
-                    .then((response) => {
+                    .then((response: any) => {
                         console.log(response)
                         var responseJson = response.json()
                         console.log(responseJson)
@@ -94,7 +95,7 @@ export const useAuthStore = defineStore({
                             router.push('/login');
                         }
                     })
-            } catch (error) {
+            } catch (error: any) {
                 this.error = error;
             } finally {
                 this.loading = false;

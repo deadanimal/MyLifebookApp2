@@ -1,3 +1,4 @@
+
 <template>
     <ion-page>
         <ion-header>
@@ -30,10 +31,10 @@
 </template>
   
 <script lang="ts">
+/* eslint-disable */
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
-import { usePostStore } from "../stores/post";
 import { useAuthStore } from "../stores/auth";
 
 
@@ -48,25 +49,16 @@ export default defineComponent({
     },
 
     setup() {
-        const postTodo = usePostStore();
-        return { postTodo };
+        
+        
     },
 
     mounted() {
-        this.lol = this.postTodo.lol;
+        
     },
 
     methods: {
-        increase() {
-            this.postTodo.tambah();
-            this.lol = this.postTodo.lol;
-            console.log("goBack"); // current form values
-        },
 
-        reduce() {
-            this.postTodo.tolak();
-            this.lol = this.postTodo.lol;
-        },
 
         logout() {
             const auth = useAuthStore();

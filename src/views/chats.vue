@@ -1,40 +1,28 @@
+/* eslint-disable */
 <template>
     <ion-page>
         <ion-header>
             <ion-toolbar>
                 <ion-buttons slot="start">
                     <ion-button>
-                        Profile
-                    </ion-button>
-                </ion-buttons>
-                <ion-buttons slot="end">
-                    <ion-button @click="logout">
-                        <ion-icon :icon="exitOutline" size="large" />
+                        Chat
                     </ion-button>
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
-            <ion-header collapse="condense">
-                <ion-toolbar>
-                    <ion-title size="large">Profile</ion-title>
-                </ion-toolbar>
-            </ion-header>
 
-            val: {{ lol }}
 
-            <ion-button @click="increase()">Go Back </ion-button>
-            <ion-button @click="reduce()">reduce</ion-button>
         </ion-content>
     </ion-page>
 </template>
   
 <script lang="ts">
+/* eslint-disable */
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
-import { usePostStore } from "../stores/post";
-import { useAuthStore } from "../stores/auth";
+import { useChatStore } from "../stores/chat";
 
 
 export default defineComponent({
@@ -43,35 +31,26 @@ export default defineComponent({
     data() {
         return {
             exitOutline,
-            lol: 0
+            chats: [],
         }
     },
 
     setup() {
-        const postTodo = usePostStore();
-        return { postTodo };
+        const chatStore = useChatStore();
+        return { chatStore };
     },
 
     mounted() {
-        this.lol = this.postTodo.lol;
+        console.log('ok')
+        console.log(import.meta.env.VUE_APP_API_URL)
+        this.listChats();
+        this.chats = this.chatStore.chats;
     },
 
     methods: {
-        increase() {
-            this.postTodo.tambah();
-            this.lol = this.postTodo.lol;
-            console.log("goBack"); // current form values
+        listChats() {
+            this.chatStore.listChats();
         },
-
-        reduce() {
-            this.postTodo.tolak();
-            this.lol = this.postTodo.lol;
-        },
-
-        logout() {
-            const auth = useAuthStore();
-            auth.logout();
-        }
     }
 });
 
