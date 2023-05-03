@@ -23,6 +23,6 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/stores/post.js"  ],
   "exclude": ["node_modules"]
 }

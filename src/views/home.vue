@@ -27,5 +27,7 @@
 <script lang="ts" setup>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { exitOutline } from 'ionicons/icons';
+
+
 </script>
   
