@@ -60,6 +60,7 @@ import { mailOutline, keyOutline } from 'ionicons/icons';
 import { useRouter } from 'vue-router';
 import { useForm, useField } from 'vee-validate';
 import * as yup from 'yup';
+import { useAuthStore } from "../stores/auth";
 
 type Model = {
     email: string;
@@ -67,6 +68,8 @@ type Model = {
 }
 
 const router = useRouter();
+
+const auth = useAuthStore();
 
 const schema = yup.object({
     email: yup.string().required().email(),
@@ -92,9 +95,9 @@ function onInvalidSubmit({ values, errors, results }: { values: any, errors: any
 }
 
 const onSubmit = handleSubmit((values) => {
-    
+    auth.login(values.email, values.password);
     console.log(values);
-    router.push('/home');
+    //router.push('/home');
 
 }, onInvalidSubmit);
 
