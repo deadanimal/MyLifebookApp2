@@ -13,9 +13,9 @@
                 <ion-label>Record</ion-label>
             </ion-tab-button>
 
-            <ion-tab-button tab="tab3">
+            <ion-tab-button tab="tab3" @click="ask()">
                 <ion-icon :icon="ellipse" />
-                <ion-label>Aide</ion-label>
+                <ion-label>Ask</ion-label>
             </ion-tab-button>            
 
             <ion-tab-button tab="tab4" href="/chats">
@@ -46,6 +46,11 @@ export default defineComponent({
             triangle,
             home, documents, chatbubbles, person
    
+        }
+    },
+    methods: {
+        ask() {
+            console.log('ASK');
         }
     }
 });

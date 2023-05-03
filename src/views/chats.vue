@@ -19,7 +19,7 @@
   
 <script lang="ts">
 /* eslint-disable */
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonLabel } from '@ionic/vue';
 import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useChatStore } from "../stores/chat";
@@ -29,7 +29,7 @@ export default defineComponent({
     name: 'ChatsView',
 
     components: {
-        IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons, IonTitle
+        IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons, IonTitle, IonItem, IonLabel
     },
 
     data() {
