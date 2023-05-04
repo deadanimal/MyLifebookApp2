@@ -16,7 +16,6 @@
             </router-link>
             
         </ion-content>
-        <ActionButton></ActionButton>
     </ion-page>
 </template>
   
@@ -27,14 +26,12 @@ import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useChatStore } from "../stores/chat";
 import { VoiceRecorder, VoiceRecorderPlugin, RecordingData, GenericResponse, CurrentRecordingStatus } from 'capacitor-voice-recorder';
-import ActionButton from '../components/ActionButton.vue';
 
 export default defineComponent({
     name: 'ChatsView',
 
     components: {
         IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons, IonTitle, IonItem, IonLabel,
-        ActionButton
     },
 
     data() {
