@@ -68,7 +68,7 @@ export const useAuthStore = defineStore({
     async logout() {
       console.log("Authentication - Logout");
       this.loading = true;
-
+      router.push("/login");
       try {
         const options = {
           method: "POST",
@@ -98,8 +98,7 @@ export const useAuthStore = defineStore({
         console.log("Error: ", error);
         this.error = error;
       } finally {
-        this.loading = false;
-        router.push("/login");
+        this.loading = false;        
       }
     },
   },
