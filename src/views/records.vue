@@ -19,7 +19,7 @@
   
   
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem } from '@ionic/vue';
 import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
@@ -29,7 +29,7 @@ export default defineComponent({
     name: 'RecordsView',
 
     components: {
-        IonPage, IonHeader, IonToolbar, IonContent, IonTitle
+        IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonItem
     },
 
     data() {

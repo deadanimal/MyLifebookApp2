@@ -2,20 +2,18 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>Record</ion-title>
-                <!-- <ion-buttons slot="start">
-                    <ion-button>
-                        Home
-                    </ion-button>
+                <ion-buttons slot="start">
+                    <ion-back-button></ion-back-button>
                 </ion-buttons>
-                <ion-buttons slot="end">
-                    <ion-button href="/login">
-                        <ion-icon :icon="exitOutline" size="large" />
-                    </ion-button>
-                </ion-buttons> -->
+                <ion-title>Record</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
+
+            {{ recordStore.record }} <br />
+            Record Type: {{ recordStore['record']['record_type'] }} <br />
+            <a :href="'https://pipeline-apps.sgp1.digitaloceanspaces.com/' + recordStore['record']['raw_url']">Record
+                URL</a>
 
         </ion-content>
     </ion-page>
@@ -23,39 +21,48 @@
   
   
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import { exitOutline } from 'ionicons/icons';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonBackButton, IonButtons } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
-import { useChatStore } from "../stores/chat";
+import { useRecordStore } from "../stores/record";
+import { useRoute } from 'vue-router'
+import { Howl, Howler } from 'howler';
+
 
 export default defineComponent({
     name: 'RecordsView',
 
     components: {
-        IonPage, IonHeader, IonToolbar, IonContent, IonTitle
+        IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonBackButton, IonButtons
     },
 
     data() {
         return {
-            exitOutline,
-            chats: [],
+            record: null,
         }
     },
 
     setup() {
-        const chatStore = useChatStore();
-        return { chatStore };
+        const route = useRoute()
+        const recordStore = useRecordStore();
+
+        return { route, recordStore };
     },
 
     mounted() {
-        this.listChats();
-        this.chats = this.chatStore.chats;
+        const id: any = this.route.params.recordId;
+        this.detailRecord(id);
+
+        // var sound = new Howl({
+        //     src: [this.recordStore['record']['raw_url']]
+        // });
+
+        // sound.play();
     },
 
     methods: {
-        listChats() {
-            this.chatStore.listChats();
+        detailRecord(id: string) {
+            this.recordStore.detailRecord(id);
         },
     }
 });

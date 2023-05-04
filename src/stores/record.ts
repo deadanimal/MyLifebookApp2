@@ -13,7 +13,7 @@ export const useRecordStore = defineStore({
         error: null,
 
         records: useStorage('records', []),
-        record: useStorage('record', {}),
+        record: useStorage('record', null),
 
 
     }),
@@ -40,6 +40,27 @@ export const useRecordStore = defineStore({
                 this.loading = false;
             }
         },
+
+        async detailRecord(id: string) {
+            console.log('recordStore: detailRecord - ' + id);
+            const url = "https://memoir.my/api/records/" + id;
+
+            this.loading = true;
+            try {
+                await axios.get(url, {
+                    headers: {
+                        Authorization: 'Bearer ' + authStore.userToken
+                    }
+                })
+                    .then((response:any) => {
+                        this.record = response['data']['record'];
+                    })
+            } catch (error:any) {
+                this.error = error;
+            } finally {
+                this.loading = false;
+            }
+        }, 
 
         async createTextRecord() {
             console.log('');
