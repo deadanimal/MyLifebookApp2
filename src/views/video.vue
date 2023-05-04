@@ -5,13 +5,15 @@
                 <ion-buttons slot="start">
                     <ion-back-button></ion-back-button>
                 </ion-buttons>
-                <ion-title>Chat</ion-title>
+                <ion-title>Video</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
 
-            {{ chatStore.chat }} <br />
-
+            {{ videoStore.video }} <br />
+            Video Type: {{ videoStore['video']['video_type'] }} <br />
+            <a :href="'https://pipeline-apps.sgp1.digitaloceanspaces.com/' + videoStore['video']['raw_url']">Video
+                URL</a>
 
         </ion-content>
     </ion-page>
@@ -22,13 +24,13 @@
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonBackButton, IonButtons } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
-import { useChatStore } from "../stores/chat";
+import { useVideoStore } from "../stores/video";
 import { useRoute } from 'vue-router'
 import { Howl, Howler } from 'howler';
 
 
 export default defineComponent({
-    name: 'ChatsView',
+    name: 'VideosView',
 
     components: {
         IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonBackButton, IonButtons
@@ -36,31 +38,31 @@ export default defineComponent({
 
     data() {
         return {
-            chat: null,
+            video: null,
         }
     },
 
     setup() {
         const route = useRoute()
-        const chatStore = useChatStore();
+        const videoStore = useVideoStore();
 
-        return { route, chatStore };
+        return { route, videoStore };
     },
 
     mounted() {
-        const id: any = this.route.params.chatId;
-        this.detailChat(id);
+        const id: any = this.route.params.videoId;
+        this.detailVideo(id);
 
         // var sound = new Howl({
-        //     src: [this.chatStore['chat']['raw_url']]
+        //     src: [this.videoStore['video']['raw_url']]
         // });
 
         // sound.play();
     },
 
     methods: {
-        detailChat(id: string) {
-            this.chatStore.detailChat(id);
+        detailVideo(id: string) {
+            this.videoStore.detailVideo(id);
         },
     }
 });

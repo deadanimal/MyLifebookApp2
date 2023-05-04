@@ -18,7 +18,9 @@
         </ion-header>
         <ion-content :fullscreen="true">
             profile picture: show and upload <br/>
-            name, email, username: show and change <br/>
+            name: {{ authStore.name }} <br/>
+            email: {{ authStore.email }} <br/>
+            username: {{ authStore.username }} <br/>
             change password <br/>
             show billings <br />
         </ion-content>
@@ -47,7 +49,8 @@ export default defineComponent({
     },
 
     setup() {
-        
+        const authStore = useAuthStore();
+        return { authStore };    
         
     },
 

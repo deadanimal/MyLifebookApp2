@@ -5,24 +5,24 @@ import axios from "axios";
 
 const authStore = useAuthStore();
 
-export const useChatStore = defineStore({
-    id: 'chatStore',
+export const useVideoStore = defineStore({
+    id: 'videoStore',
     state: () => ({
 
         loading: false,
         error: null,
 
-        chats: useStorage('chats', []),
-        chat: useStorage('chat', null),
+        videos: useStorage('videos', []),
+        video: useStorage('video', null),
 
 
     }),
 
     actions: {
 
-        async listChats() {
-            console.log('chatStore: listChats');
-            const url = "https://memoir.my/api/chats";
+        async listVideos() {
+            console.log('videoStore: listVideos');
+            const url = "https://memoir.my/api/videos";
 
             this.loading = true;
             try {
@@ -32,7 +32,7 @@ export const useChatStore = defineStore({
                     }
                 })
                     .then((response:any) => {
-                        this.chats = response['data']['chats'];
+                        this.videos = response['data']['videos'];
                     })
             } catch (error:any) {
                 this.error = error;
@@ -41,9 +41,9 @@ export const useChatStore = defineStore({
             }
         },
 
-        async detailChat(id: string) {
-            console.log('chatStore: detailChat - ' + id);
-            const url = "https://memoir.my/api/chats/" + id;
+        async detailVideo(id: string) {
+            console.log('videoStore: detailVideo - ' + id);
+            const url = "https://memoir.my/api/videos/" + id;
 
             this.loading = true;
             try {
@@ -53,20 +53,20 @@ export const useChatStore = defineStore({
                     }
                 })
                     .then((response:any) => {
-                        this.chat = response['data']['chat'];
+                        this.video = response['data']['video'];
                     })
             } catch (error:any) {
                 this.error = error;
             } finally {
                 this.loading = false;
             }
-        },         
+        }, 
 
-        async createTextChat() {
+        async createTextVideo() {
             console.log('');
         },
 
-        async createAudioChat() {
+        async createAudioVideo() {
             console.log('');
         },
 

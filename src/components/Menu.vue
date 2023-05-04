@@ -52,9 +52,9 @@
                 <ion-label>Chat</ion-label>
             </ion-tab-button>
 
-            <ion-tab-button tab="tab4" href="/asks">
-                <ion-icon :icon="search" />
-                <ion-label>Search</ion-label>
+            <ion-tab-button tab="tab4" href="/videos">
+                <ion-icon :icon="image" />
+                <ion-label>Video</ion-label>
             </ion-tab-button>            
 
             <ion-tab-button tab="tab5" href="/profile">
@@ -88,7 +88,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonRouterOutlet } from '@ionic/vue';
-import { ellipse, square, triangle, home, documents, chatbubbles, person, briefcase, search } from 'ionicons/icons';
+import { ellipse, square, triangle, home, documents, chatbubbles, person, briefcase, search, image } from 'ionicons/icons';
 import { OverlayEventDetail } from '@ionic/core/components';
 
 
@@ -101,7 +101,7 @@ export default defineComponent({
             ellipse,
             square,
             triangle,
-            home, documents, chatbubbles, person, briefcase, search
+            home, documents, chatbubbles, person, briefcase, search, image
 
         }
     },
