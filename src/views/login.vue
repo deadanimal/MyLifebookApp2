@@ -9,7 +9,7 @@
                                 <ion-img src="assets/img/logo.png" class="w-1/2 mx-auto rounded-full" />
                                 <ion-card-header class="text-center">
                                     <ion-card-title>Login</ion-card-title>
-                                    <p class="mt-1">Masukkan email dan password anda untuk mengakses akun anda</p>
+                                    <p class="mt-1">Please enter email and password to access your account</p>
                                 </ion-card-header>
                                 <ion-card-content class="my-12">
                                     <form @submit="onSubmit" :validation-schema="schema">
@@ -41,7 +41,7 @@
                                     </form>
 
                                     <div class="flex justify-center mt-5">
-                                        <p class="text-sm">Belum punya akun? <a href="register">Daftar</a>s
+                                        <p class="text-sm">Do not have an account? <a href="/register">Register</a>
                                         </p>
                                     </div>
                                 </ion-card-content>
@@ -77,8 +77,8 @@ const { handleSubmit } = useForm<Model>({
     validationSchema: schema,
     validateOnMount: false,
     initialValues: {
-        email: 'blabla@gmail.com',
-        password: '12345678'
+        email: 'user@email.com',
+        password: 'pass12345678'
     }
 });
 

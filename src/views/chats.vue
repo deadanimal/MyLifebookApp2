@@ -52,8 +52,7 @@ export default defineComponent({
     mounted() {
         this.listChats();
         this.chats = this.chatStore.chats;
-        this.chatStore.createTextChat();
-
+        //this.chatStore.createTextChat();
     },
 
     methods: {

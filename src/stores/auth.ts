@@ -92,8 +92,6 @@ export const useAuthStore = defineStore({
             this.name = "";
             this.username = "";
             this.email = "";
-
-            router.push("/login");
           }
         });
       } catch (error: any) {
@@ -101,6 +99,7 @@ export const useAuthStore = defineStore({
         this.error = error;
       } finally {
         this.loading = false;
+        router.push("/login");
       }
     },
   },

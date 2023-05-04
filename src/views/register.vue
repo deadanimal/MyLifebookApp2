@@ -9,7 +9,7 @@
                                 <ion-img src="assets/img/logo.png" class="w-1/2 mx-auto rounded-full" />
                                 <ion-card-header class="text-center">
                                     <ion-card-title>Register</ion-card-title>
-                                    <p class="mt-1">Masukkan email dan password anda untuk mengakses mendaftar</p>
+                                    <p class="mt-1">Please include your details to register for an account</p>
                                 </ion-card-header>
                                 <ion-card-content class="my-12">
                                     <form @submit="onSubmit" :validation-schema="schema">
@@ -53,7 +53,7 @@
                                     </form>
 
                                     <div class="flex justify-center mt-5">
-                                        <p class="text-sm">Sudah punya akun? <a href="login">Login</a>
+                                        <p class="text-sm">Already have an account? <a href="/login">Login</a>
 
                                         </p>
                                     </div>
