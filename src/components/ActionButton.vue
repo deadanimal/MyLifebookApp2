@@ -19,7 +19,7 @@
   
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonRouterOutlet, IonFab, IonFabButton, IonFabList } from '@ionic/vue';
+import { IonIcon, IonFab, IonFabButton, IonFabList } from '@ionic/vue';
 import { ellipse, camera, mic, home, documents, chatbubbles, person, briefcase, search, image } from 'ionicons/icons';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { Camera, CameraResultType } from '@capacitor/camera';
@@ -28,7 +28,7 @@ import { Camera, CameraResultType } from '@capacitor/camera';
 
 export default defineComponent({
     name: 'ActionButton',
-    components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonRouterOutlet, IonFab, IonFabList, IonFabButton },
+    components: { IonIcon, IonFab, IonFabList, IonFabButton },
     setup() {
         return {
             ellipse,
