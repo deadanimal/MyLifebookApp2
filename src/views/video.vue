@@ -26,7 +26,7 @@ import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useVideoStore } from "../stores/video";
 import { useRoute } from 'vue-router'
-import { Howl, Howler } from 'howler';
+
 
 
 export default defineComponent({
