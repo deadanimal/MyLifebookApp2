@@ -13,6 +13,14 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/home.vue"),
       },
       {
+        path: "/asks",
+        component: () => import("@/views/asks.vue"),
+      },  
+      {
+        path: "/asks/:askId",
+        component: () => import("@/views/ask.vue"),
+      },         
+      {
         path: "/chats",
         component: () => import("@/views/chats.vue"),
       },  
