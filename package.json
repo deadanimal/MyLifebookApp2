@@ -22,6 +22,8 @@
     "@types/yup": "^0.32.0",
     "@vueuse/core": "^10.1.2",
     "axios": "^1.4.0",
+    "capacitor-voice-recorder": "^4.0.2",
+    "cordova-plugin-ionic": "5.5.3",
     "core-js": "^3.6.5",
     "howler": "^2.2.3",
     "ionicons": "^6.0.3",

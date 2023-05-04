@@ -23,13 +23,16 @@
             username: {{ authStore.username }} <br/>
             change password <br/>
             show billings <br />
+
+            <ion-button @click="logout()">Log Out</ion-button>
+
         </ion-content>
     </ion-page>
 </template>
   
 <script lang="ts">
 /* eslint-disable */
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/vue';
 import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
@@ -39,7 +42,7 @@ export default defineComponent({
     name: 'ProfileView',
 
     components: {
-        IonPage, IonHeader, IonToolbar, IonContent, IonTitle
+        IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonButton
     },
 
     data() {
