@@ -14,9 +14,9 @@
                     {{ chatIndex }}. {{ chat['raw_message'] }} {{ chat }}
                 </ion-item>
             </router-link>
-
-
+            
         </ion-content>
+        <ActionButton></ActionButton>
     </ion-page>
 </template>
   
@@ -27,13 +27,14 @@ import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useChatStore } from "../stores/chat";
 import { VoiceRecorder, VoiceRecorderPlugin, RecordingData, GenericResponse, CurrentRecordingStatus } from 'capacitor-voice-recorder';
-
+import ActionButton from '../components/ActionButton.vue';
 
 export default defineComponent({
     name: 'ChatsView',
 
     components: {
-        IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons, IonTitle, IonItem, IonLabel
+        IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons, IonTitle, IonItem, IonLabel,
+        ActionButton
     },
 
     data() {
@@ -52,36 +53,6 @@ export default defineComponent({
         this.listChats();
         this.chats = this.chatStore.chats;
 
-        VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => console.log(result.value))
-
-
-        VoiceRecorder.startRecording()
-            .then((result: GenericResponse) => console.log(result.value))
-            .catch(error => console.log(error))
-
-        var recordingDataBase64: any;
-        var recordingDataMimeType;
-
-        setTimeout(() => {
-            VoiceRecorder.stopRecording()
-                .then((result: RecordingData) => {
-                    console.log(result.value)
-                    recordingDataBase64 = result.value['recordDataBase64']
-                    recordingDataMimeType = result.value['mimeType']
-
-                    setTimeout(() => {
-                        const base64Sound = recordingDataBase64 // from plugin
-                        const mimeType = "audio/webm;codecs=opus"  // from plugin        
-                        const audioRef = new Audio(`data:${mimeType};base64,${base64Sound}`)
-                        audioRef.oncanplaythrough = () => audioRef.play()
-                        audioRef.load()
-                    }, 1000)
-
-                })
-                .catch(error => console.log(error))
-
-
-        }, 5000)
     },
 
     methods: {
