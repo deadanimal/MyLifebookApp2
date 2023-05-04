@@ -1,107 +1,107 @@
 /* eslint-disable */
-import { defineStore } from 'pinia';
-import { useStorage } from '@vueuse/core';
+import { defineStore } from "pinia";
+import { useStorage } from "@vueuse/core";
 import axios from "axios";
-import router from '../router/index';
+import router from "../router/index";
 
 export const useAuthStore = defineStore({
-    id: 'auth',
-    state: () => ({
+  id: "auth",
+  state: () => ({
+    loading: false,
+    error: null,
 
-        loading: false,
-        error: null,
+    userId: useStorage("userId", ""),
+    profileId: useStorage("profileId", ""),
+    isAuthenticated: useStorage("isAuthenticated", false),
+    userToken: useStorage("userToken", ""),
 
-        userId: useStorage('userId', ''),
-        profileId: useStorage('profileId', ''),
-        isAuthenticated: useStorage('isAuthenticated', false),
-        userToken: useStorage('userToken', ''),
+    name: useStorage("name", ""),
+    username: useStorage("username", ""),
+    email: useStorage("email", ""),
+  }),
 
-        name: useStorage('name', ''),
-        username: useStorage('username', ''),
-        email: useStorage('email', ''),
-    }),
+  actions: {
+    async login(email: string, password: string) {
+      console.log("Authentication - Login");
+      this.loading = true;
+      try {
+        await axios.post("https://memoir.my/api/login", {
+          email: email,
+          password: password,
+          device_name: "123",
+        }).then((response) => {
+          console.log("Response: ", response);
 
-    actions: {
+          if (response["data"]["token"]) {
+            console.log(response["data"]["token"]);
+            this.isAuthenticated = true;
+            this.userId = response["data"]["userId"];
+            this.profileId = response["data"]["profileId"];
+            this.userToken = response["data"]["token"];
 
-        async login(email: string, password: string) {
+            this.name = response["data"]["name"];
+            this.username = response["data"]["username"];
+            this.email = response["data"]["email"];
 
-            this.loading = true;
-            try {
-                await axios.post("https://memoir.my/api/login", {
-                    email: email,
-                    password: password,
-                    device_name: '123'
-                }).then((response) => {
-                    if (response['data']['token']) {
-                        console.log(response['data']['token']);
-                        this.isAuthenticated = true;
-                        this.userId = response['data']['userId'];
-                        this.profileId = response['data']['profileId'];
-                        this.userToken = response['data']['token'];
+            console.log(router);
+            router.push("/home");
+          } else {
+            console.log(response["data"]["error"]);
+            this.isAuthenticated = false;
+            this.userId = "";
+            this.profileId = "";
+            this.userToken = "";
 
-                        this.name = response['data']['name'];
-                        this.username = response['data']['username'];
-                        this.email = response['data']['email'];
+            this.name = "";
+            this.username = "";
+            this.email = "";
+          }
+        });
+      } catch (error: any) {
+        console.log("Error: ", error);
+        this.error = error;
+      } finally {
+        this.loading = false;
+      }
+    },
 
-                        console.log(router);
-                        router.push('/home');
-                    } else {
-                        console.log(response['data']['error']);
-                        this.isAuthenticated = false;
-                        this.userId = '';
-                        this.profileId = ''
-                        this.userToken = '';
+    async logout() {
+      console.log("Authentication - Logout");
+      this.loading = true;
 
-                        this.name = '';
-                        this.username = '';
-                        this.email = '';
-                    }
-                })
+      try {
+        const options = {
+          method: "POST",
+          url: "https://memoir.my/api/logout",
+          headers: {
+            Authorization: "Bearer " + this.userToken,
+          },
+        };
 
-            } catch (error:any) {
-                console.log('error: ', error);
-                this.error = error;
-            } finally {
-                this.loading = false;
-            }
-        },
+        await axios.request(options).then((response) => {
+          console.log("Response: ", response);
 
-        async logout() {
-            this.loading = true
-            try {
+          if (response["data"]["status"] == "OK") {
+            localStorage.clear();
 
-                await axios.post("https://memoir.my/api/logout", {
-                    headers: {
-                        Authorization: 'Bearer ' + this.userToken
-                    }
-                })
-                    .then((response: any) => {
-                        console.log(response)
-                        var responseJson = response.json()
-                        console.log(responseJson)
-                        if (responseJson['status'] == 'OK') {
+            this.isAuthenticated = false;
+            this.userId = "";
+            this.profileId = "";
+            this.userToken = "";
 
-                            localStorage.clear();
+            this.name = "";
+            this.username = "";
+            this.email = "";
 
-                            this.isAuthenticated = false;
-                            this.userId = '';
-                            this.profileId = ''
-                            this.userToken = '';
-
-                            this.name = '';
-                            this.username = '';
-                            this.email = '';
-
-                            router.push('/login');
-                        }
-                    })
-            } catch (error: any) {
-                this.error = error;
-            } finally {
-                this.loading = false;
-
-
-            }
-        },
-    }
-})
+            router.push("/login");
+          }
+        });
+      } catch (error: any) {
+        console.log("Error: ", error);
+        this.error = error;
+      } finally {
+        this.loading = false;
+      }
+    },
+  },
+});
