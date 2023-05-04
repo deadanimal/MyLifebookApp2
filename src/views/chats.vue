@@ -11,7 +11,7 @@
             <router-link :to="{ path: '/chats/' + chat['uuid'] }" v-for="(chat, chatIndex) in chatStore.chats"
                 v-bind:key="chat['uuid']">
                 <ion-item href="#">
-                    {{ chatIndex }}. {{ chat['raw_message'] }} {{ chat }}
+                    {{ chatIndex }}. {{ chat['raw_message'] }} 
                 </ion-item>
             </router-link>
             

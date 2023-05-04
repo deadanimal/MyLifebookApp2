@@ -1,9 +1,9 @@
 <template>
-    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab slot="fixed" vertical="top" horizontal="end">
         <ion-fab-button color="secondary">
             <ion-icon :icon="briefcase"></ion-icon>
         </ion-fab-button>
-        <ion-fab-list side="top">
+        <ion-fab-list side="bottom">
             <ion-fab-button color="dark">
                 <ion-icon :icon="home"></ion-icon>
             </ion-fab-button>
