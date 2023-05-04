@@ -8,8 +8,8 @@
         <ion-content :fullscreen="true">
 
             <router-link :to="{path: '/records/' + record['uuid']}" v-for="(record, recordIndex) in recordStore.records" v-bind:key="record['uuid']">
-                <ion-item href="#">
-                    {{ recordIndex }}. {{ record['raw_message'] }} <br/> 
+                <ion-item lines="none">
+                    {{ recordIndex }} <br/> 
                     {{ record }}
                 </ion-item>
             </router-link>            

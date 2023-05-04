@@ -67,8 +67,7 @@ export const useAuthStore = defineStore({
 
     async logout() {
       console.log("Authentication - Logout");
-      this.loading = true;
-      router.push("/login");
+      this.loading = true;      
       try {
         const options = {
           method: "POST",

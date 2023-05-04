@@ -36,7 +36,7 @@ import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from 
 import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
-
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
     name: 'ProfileView',
@@ -53,7 +53,8 @@ export default defineComponent({
 
     setup() {
         const authStore = useAuthStore();
-        return { authStore };    
+        const router = useRouter();
+        return { authStore, router };    
         
     },
 
@@ -65,8 +66,10 @@ export default defineComponent({
 
 
         logout() {
+            this.router.push("/login");
+            
             const auth = useAuthStore();
-            auth.logout();
+            auth.logout();            
         }
     }
 });

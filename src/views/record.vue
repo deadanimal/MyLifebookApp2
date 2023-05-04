@@ -11,9 +11,9 @@
         <ion-content :fullscreen="true">
 
             {{ recordStore.record }} <br />
-            Record Type: {{ recordStore['record']['record_type'] }} <br />
-            <a :href="'https://pipeline-apps.sgp1.digitaloceanspaces.com/' + recordStore['record']['raw_url']">Record
-                URL</a>
+            <!-- Record Type: {{ recordStore.record['record_type'] }} <br /> -->
+            <!-- <a :href="'https://pipeline-apps.sgp1.digitaloceanspaces.com/' + recordStore.record['raw_url']">Record
+                URL</a> -->
 
         </ion-content>
     </ion-page>
