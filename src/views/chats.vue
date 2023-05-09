@@ -3,26 +3,46 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>Chat</ion-title>
+                <ion-title>Chat with Sophy</ion-title>
+                <ion-buttons slot="end">
+                    <ion-button>
+                        <ion-icon :icon="mic" aria-hidden="true"></ion-icon>
+
+                    </ion-button>
+                </ion-buttons>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
 
-            <router-link :to="{ path: '/chats/' + chat['uuid'] }" v-for="(chat, chatIndex) in chatStore.chats"
+            <!-- <router-link :to="{ path: '/chats/' + chat['uuid'] }" v-for="(chat, chatIndex) in chatStore.chats"
                 v-bind:key="chat['uuid']">
                 <ion-item lines="none">
-                    {{ chatIndex }}. {{ chat['raw_message'] }} 
+                    {{ chatIndex }}. {{ chat['raw_message'] }}
                 </ion-item>
-            </router-link>
-            
+            </router-link> -->
+
+            <ion-item 
+                lines="none" 
+                v-for="(chat, chatIndex) in chatStore.chats"
+                v-bind:key="chat['uuid']">
+                {{ chatIndex }}. {{ chat['raw_message'] }}
+            </ion-item>
+
+            <ion-item>
+                <ion-textarea label="Regular textarea" placeholder="Type something here"></ion-textarea>
+            </ion-item>
+
         </ion-content>
     </ion-page>
 </template>
   
 <script lang="ts">
 /* eslint-disable */
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonLabel } from '@ionic/vue';
-import { exitOutline } from 'ionicons/icons';
+import {
+    IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonLabel,
+    IonTextarea
+} from '@ionic/vue';
+import { mic } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useChatStore } from "../stores/chat";
 import { VoiceRecorder, VoiceRecorderPlugin, RecordingData, GenericResponse, CurrentRecordingStatus } from 'capacitor-voice-recorder';
@@ -32,11 +52,12 @@ export default defineComponent({
 
     components: {
         IonPage, IonHeader, IonToolbar, IonContent, IonButton, IonButtons, IonTitle, IonItem, IonLabel,
+        IonTextarea
     },
 
     data() {
         return {
-            exitOutline,
+            mic,
             chats: [],
         }
     },

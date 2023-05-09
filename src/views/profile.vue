@@ -26,6 +26,8 @@
 
             <ion-button @click="logout()">Log Out</ion-button>
 
+            <ion-button @click="goToBilling()">Billing</ion-button>
+
         </ion-content>
     </ion-page>
 </template>
@@ -37,6 +39,8 @@ import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useRouter } from 'vue-router';
+import { Browser } from '@capacitor/browser';
+
 
 export default defineComponent({
     name: 'ProfileView',
@@ -67,9 +71,13 @@ export default defineComponent({
 
         logout() {
             this.router.push("/login");
-            
-            const auth = useAuthStore();
-            auth.logout();            
+            this.authStore.logout();            
+        },
+
+        goToBilling() {
+            const userToken = this.authStore.userToken;
+            const url = 'https://memoir.my/billing-from-mobile?token=' + userToken; 
+            Browser.open({ url: url });
         }
     }
 });

@@ -3,6 +3,12 @@
         <ion-header>
             <ion-toolbar>
                 <ion-title>Record</ion-title>
+                <ion-buttons slot="end">
+                    <ion-button>
+                        <ion-icon :icon="cloudUpload" aria-hidden="true"></ion-icon>
+
+                    </ion-button>
+                </ion-buttons>                
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
@@ -20,8 +26,10 @@
   
   
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem } from '@ionic/vue';
-import { exitOutline } from 'ionicons/icons';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem,
+    IonButton, IonButtons, IonIcon
+ } from '@ionic/vue';
+import { cloudUpload } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useRecordStore } from "../stores/record";
@@ -30,12 +38,13 @@ export default defineComponent({
     name: 'RecordsView',
 
     components: {
-        IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonItem
+        IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonItem,
+        IonButton, IonButtons, IonIcon
     },
 
     data() {
         return {
-            exitOutline,
+            cloudUpload,
             records: [],
         }
     },

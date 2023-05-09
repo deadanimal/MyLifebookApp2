@@ -947,7 +947,7 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/runtime@^7.12.13", "@babel/runtime@^7.15.4", "@babel/runtime@^7.8.4":
+"@babel/runtime@^7.12.0", "@babel/runtime@^7.12.13", "@babel/runtime@^7.15.4", "@babel/runtime@^7.19.0", "@babel/runtime@^7.8.4":
   version "7.20.6"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.20.6.tgz"
   integrity sha512-Q+8MqP7TiHMWzSfwiJwXCjyf4GYA4Dgw3emg/7xmwsdLJOZUp+nMqcOwOzzYheuM1rhDu8FSj2l0aoMygEuXuA==
@@ -1000,6 +1000,11 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@capacitor-community/stripe@^4.2.2":
+  version "4.2.2"
+  resolved "https://registry.npmjs.org/@capacitor-community/stripe/-/stripe-4.2.2.tgz"
+  integrity sha512-UzqH0Ytk8OEQdWEy31HXiPXDyXZxh9kQbOCq2kTPsSy/pdeVEid5+pxHXyU2/ZNgg0hvOupI7naHSsm2ftrW1Q==
+
 "@capacitor/android@4.6.0":
   version "4.6.0"
   resolved "https://registry.npmjs.org/@capacitor/android/-/android-4.6.0.tgz"
@@ -1009,6 +1014,11 @@
   version "4.1.1"
   resolved "https://registry.npmjs.org/@capacitor/app/-/app-4.1.1.tgz"
   integrity sha512-SJcJA1rhFQyeH6eLfUEbdKkHzAwzahJNVPNXmU88fdmXpMgM2dJGzZj1vrm6e21aQq+Z4aBVLJ2RCdj92zD7wg==
+
+"@capacitor/browser@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/@capacitor/browser/-/browser-5.0.0.tgz"
+  integrity sha512-q0MpAsgXZWqrpmt+VCkGcoHCIMmuLk/dXjb3p7XmrwN/3da2nLrJrszpfoYRtE07tS3q1Qjks5F87j/Gij9TfA==
 
 "@capacitor/camera@^5.0.0":
   version "5.0.0"
@@ -1652,10 +1662,26 @@
   resolved "https://registry.npmjs.org/@soda/get-current-script/-/get-current-script-1.0.2.tgz"
   integrity sha512-T7VNNlYVM1SgQ+VsMYhnDkcGmWhQdL0bDyGm5TlQ3GBXnJscEClUUOKduWTmm2zCnvNLC1hc3JpuXjs/nFOc5w==
 
-"@stencil/core@^2.18.0":
+"@stencil/core@^2.14.2", "@stencil/core@^2.18.0":
   version "2.20.0"
   resolved "https://registry.npmjs.org/@stencil/core/-/core-2.20.0.tgz"
   integrity sha512-ka+eOW+dNteXIfLCRipNbbAlBEQjqJ2fkx3fxzlKgnNHEQMdZiuIjlWt63KzvOJStNeuADdQXo89BB1dC2VRUw==
+
+"@stripe-elements/stripe-elements@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/@stripe-elements/stripe-elements/-/stripe-elements-2.0.2.tgz"
+  integrity sha512-LxaIKp4N3ZsveyKRHHB/HtwMpNhh8mtm3Raj6QXCLNqRrfObaKOnEFzI0D8khg5oYKCX645a5AxPzqOfIGRbQA==
+  dependencies:
+    "@stencil/core" "^2.14.2"
+    "@stripe/stripe-js" "^1.25.0"
+    i18next "^20.3.3"
+    i18next-browser-languagedetector "^6.1.2"
+    ionicons "^6.0.1"
+
+"@stripe/stripe-js@^1.25.0":
+  version "1.52.1"
+  resolved "https://registry.npmjs.org/@stripe/stripe-js/-/stripe-js-1.52.1.tgz"
+  integrity sha512-fza40OPSpGQlFxc5TZWiYC/6Lk89Sep1fLuv9ss33YS6lCAF8UZbfA1E6W+lwO4c7WRKZIZumHIEbPJfP/O9uw==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -5552,6 +5578,20 @@ human-signals@^2.1.0:
   resolved "https://registry.npmjs.org/human-signals/-/human-signals-2.1.0.tgz"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
+i18next-browser-languagedetector@^6.1.2:
+  version "6.1.8"
+  resolved "https://registry.npmjs.org/i18next-browser-languagedetector/-/i18next-browser-languagedetector-6.1.8.tgz"
+  integrity sha512-Svm+MduCElO0Meqpj1kJAriTC6OhI41VhlT/A0UPjGoPZBhAHIaGE5EfsHlTpgdH09UVX7rcc72pSDDBeKSQQA==
+  dependencies:
+    "@babel/runtime" "^7.19.0"
+
+i18next@^20.3.3:
+  version "20.6.1"
+  resolved "https://registry.npmjs.org/i18next/-/i18next-20.6.1.tgz"
+  integrity sha512-yCMYTMEJ9ihCwEQQ3phLo7I/Pwycf8uAx+sRHwwk5U9Aui/IZYgQRyMqXafQOw5QQ7DM1Z+WyEXWIqSuJHhG2A==
+  dependencies:
+    "@babel/runtime" "^7.12.0"
+
 iconv-lite@0.4.24:
   version "0.4.24"
   resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz"
@@ -5643,7 +5683,7 @@ ini@2.0.0:
   resolved "https://registry.npmjs.org/ini/-/ini-2.0.0.tgz"
   integrity sha512-7PnF4oN3CvZF23ADhA5wRaYEQpJ8qygSkbtTXWBeXWXmEVRXK+1ITciHWwHhsjv1TmW0MgacIv6hEi5pX5NQdA==
 
-ionicons@^6.0.2, ionicons@^6.0.3, ionicons@^6.0.4:
+ionicons@^6.0.1, ionicons@^6.0.2, ionicons@^6.0.3, ionicons@^6.0.4:
   version "6.0.4"
   resolved "https://registry.npmjs.org/ionicons/-/ionicons-6.0.4.tgz"
   integrity sha512-uDNOkBo0OVYV+kIhb51g9mb7r3Z0b+78GPZQBsjXuaetNmrB/mNTqN/uFtO+vxL/rQySKjzk8qeKJI5NWL9Ueg==
@@ -6413,7 +6453,7 @@ js-sdsl@^4.1.4:
   resolved "https://registry.npmjs.org/js-sdsl/-/js-sdsl-4.2.0.tgz"
   integrity sha512-dyBIzQBDkCqCu+0upx25Y2jGdbTGxE9fshMsCdK0ViOongpV+n5tXRcZY9v7CaVQ79AGS9KA1KHtojxiM7aXSQ==
 
-js-tokens@^4.0.0:
+"js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
@@ -6757,6 +6797,13 @@ log-update@^4.0.0:
     cli-cursor "^3.1.0"
     slice-ansi "^4.0.0"
     wrap-ansi "^6.2.0"
+
+loose-envify@^1.1.0:
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz"
+  integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
+  dependencies:
+    js-tokens "^3.0.0 || ^4.0.0"
 
 lower-case@^2.0.2:
   version "2.0.2"
@@ -8027,6 +8074,13 @@ react-is@^18.0.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+"react@^17.0.0 || ^18.0.0":
+  version "18.2.0"
+  resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
+  integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
+  dependencies:
+    loose-envify "^1.1.0"
 
 read-cache@^1.0.0:
   version "1.0.0"
