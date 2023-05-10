@@ -50,7 +50,7 @@ import {
 import { mic, micOff, pauseCircle, playCircle } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useChatStore } from "../stores/chat";
-import { VoiceRecorder, VoiceRecorderPlugin, RecordingData, GenericResponse, CurrentRecordingStatus } from 'capacitor-voice-recorder';
+//import { VoiceRecorder, VoiceRecorderPlugin, RecordingData, GenericResponse, CurrentRecordingStatus } from 'capacitor-voice-recorder';
 
 export default defineComponent({
     name: 'ChatsView',
@@ -90,31 +90,31 @@ export default defineComponent({
         startTalk() {
             this.isTalking = true;
             this.isRecording = true;
-            VoiceRecorder.startRecording()
-                .then((result: GenericResponse) => console.log(result.value))
-                .catch(error => console.log(error))
+            // VoiceRecorder.startRecording()
+            //     .then((result: GenericResponse) => console.log(result.value))
+            //     .catch(error => console.log(error))
         },
 
         pauseTalk() {
             this.isTalking = false;
-            VoiceRecorder.pauseRecording()
-                .then((result: GenericResponse) => console.log(result.value))
-                .catch(error => console.log(error))
+            // VoiceRecorder.pauseRecording()
+            //     .then((result: GenericResponse) => console.log(result.value))
+            //     .catch(error => console.log(error))
         },
 
         continueTalk() {
             this.isTalking = true;
-            VoiceRecorder.resumeRecording()
-                .then((result: GenericResponse) => console.log(result.value))
-                .catch(error => console.log(error))
+            // VoiceRecorder.resumeRecording()
+            //     .then((result: GenericResponse) => console.log(result.value))
+            //     .catch(error => console.log(error))
         },
 
         endTalk() {
             this.isTalking = false;
             this.isRecording = false;
-            VoiceRecorder.stopRecording()
-                .then((result: RecordingData) => console.log(result.value))
-                .catch(error => console.log(error))
+            // VoiceRecorder.stopRecording()
+            //     .then((result: RecordingData) => console.log(result.value))
+            //     .catch(error => console.log(error))
         },
     }
 });

@@ -81,7 +81,7 @@ export default defineComponent({
                 types: ['image/png'],
                 multiple: false,
                 readData: true
-            }).then((result) => {
+            }).then((result: any) => {
                 const file = result.files[0];
                 console.log(file);
                 const formData = new FormData();

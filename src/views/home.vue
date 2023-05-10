@@ -53,7 +53,7 @@ import { exitOutline } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useChatStore } from "../stores/chat";
-import { VoiceRecorder, VoiceRecorderPlugin, RecordingData, GenericResponse, CurrentRecordingStatus } from 'capacitor-voice-recorder';
+//import { VoiceRecorder, VoiceRecorderPlugin, RecordingData, GenericResponse, CurrentRecordingStatus } from 'capacitor-voice-recorder';
 
 
 export default defineComponent({
@@ -93,11 +93,11 @@ export default defineComponent({
 
             console.log(this.authStore.canRecordAudio)
 
-            VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => {
-                if (result.value == true) {
-                    this.authStore.canRecordAudio = true;
-                }
-            })
+            // VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => {
+            //     if (result.value == true) {
+            //         this.authStore.canRecordAudio = true;
+            //     }
+            // })
 
 
 
