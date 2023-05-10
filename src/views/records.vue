@@ -37,6 +37,7 @@ import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useRecordStore } from "../stores/record";
 import { FilePicker } from '@capawesome/capacitor-file-picker';
+import { Capacitor } from '@capacitor/core';
 
 
 export default defineComponent({
@@ -83,15 +84,14 @@ export default defineComponent({
             }).then((result) => {
                 const file = result.files[0];
                 console.log(file);
-
                 const formData = new FormData();
-                // if (file.data) {
-                //     const rawFile = new File(file.data, file.name, {
-                //         type: file.mimeType,
-                //     });
-                //     formData.append('file', rawFile, file.name);
-                //     console.log(formData)
-                // }
+
+                if (Capacitor.isNativePlatform()) {
+                    // on mobile get file path and convert to blob
+                } else {
+                    //
+                }
+
             });
 
         },
