@@ -78,9 +78,20 @@ export default defineComponent({
 
             FilePicker.pickFiles({
                 types: ['image/png'],
-                multiple: true,
-            }).then((lol)=> {
-                console.log(lol)
+                multiple: false,
+                readData: true
+            }).then((result) => {
+                const file = result.files[0];
+                console.log(file);
+
+                const formData = new FormData();
+                // if (file.data) {
+                //     const rawFile = new File(file.data, file.name, {
+                //         type: file.mimeType,
+                //     });
+                //     formData.append('file', rawFile, file.name);
+                //     console.log(formData)
+                // }
             });
 
         },
