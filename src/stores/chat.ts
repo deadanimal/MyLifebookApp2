@@ -13,6 +13,8 @@ export const useChatStore = defineStore({
 
     chats: useStorage("chats", []),
     chat: useStorage("chat", null),
+
+    noOfChats: useStorage("noOfChats", 0),
   }),
 
   actions: {

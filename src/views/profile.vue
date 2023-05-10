@@ -8,10 +8,10 @@
                     <ion-button @click="logout()">
                         <ion-icon :icon="logOut" size="large" />
                     </ion-button>
-                </ion-buttons>                
+                </ion-buttons>
                 <ion-buttons slot="end">
-                    <ion-button @click="askHelp()">
-                        <ion-icon :icon="help" size="large" />
+                    <ion-button @click="goToBilling()">
+                        <ion-icon :icon="card" size="large" />
                     </ion-button>
                 </ion-buttons>
             </ion-toolbar>
@@ -24,33 +24,39 @@
                         <ion-card>
                             <ion-card-header>
                                 <ion-card-title>
-                                    <ion-avatar>
+                                    <!-- <ion-avatar>
                                         <img alt="Silhouette of a person's head"
                                             src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-                                    </ion-avatar>
+                                    </ion-avatar> -->
                                     {{ authStore.name }}
                                 </ion-card-title>
                                 <ion-card-subtitle>{{ authStore.email }}</ion-card-subtitle>
                             </ion-card-header>
 
                             <ion-card-content>
-                                <ion-item>
-                                    <ion-input label="Old Password" placeholder="Old Password" type="password" value="oldPassword"></ion-input>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-input label="New Password" placeholder="New Password" type="password" value="newPassword"></ion-input>
-                                </ion-item>
-                                <ion-button @click="changePassword()">Change Password</ion-button>
+                                <form @submit.prevent="onSubmitChangePassword">
+                                    <ion-item>
+                                        <ion-label>Current Password</ion-label>
+                                        <ion-input label="Current Password" type="password"
+                                            v-model="oldPassword"></ion-input>
+                                    </ion-item>
+                                    <ion-item>
+                                        <ion-label>New Password</ion-label>
+                                        <ion-input label="New Password" type="password"
+                                            v-model="newPassword"></ion-input>
+                                    </ion-item>
+                                    <ion-button type="submit">Change Password</ion-button>
+                                </form>
                             </ion-card-content>
 
-                            <ion-card-content>
+                            <!-- <ion-card-content>
                                 <ion-button color="secondary" @click="uploadPicture()">Upload Picture</ion-button>
                                 <ion-button color="secondary" @click="goToBilling()">Invoice</ion-button>
-                            </ion-card-content>
+                            </ion-card-content> -->
                         </ion-card>
                     </ion-col>
                 </ion-row>
-            </ion-grid>            
+            </ion-grid>
 
 
         </ion-content>
@@ -65,7 +71,7 @@ import {
     IonGrid, IonRow, IonCol, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle,
     IonAvatar, IonItem, IonCardContent, IonInput
 } from '@ionic/vue';
-import { logOut, help } from 'ionicons/icons';
+import { logOut, help, card } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useRouter } from 'vue-router';
@@ -83,8 +89,10 @@ export default defineComponent({
     },
 
     data() {
+        let oldPassword, newPassword;
         return {
-            logOut, help
+            logOut, help, card,
+            oldPassword, newPassword
         }
     },
 
@@ -114,8 +122,10 @@ export default defineComponent({
             Browser.open({ url: url });
         },
 
-        changePassword() {
+        onSubmitChangePassword() {
             console.log('changePassword');
+            console.log('oldPassword: ', this.oldPassword);
+            console.log('newPassword: ', this.newPassword);
         },
 
         uploadPicture() {

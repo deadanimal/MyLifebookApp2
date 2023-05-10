@@ -10,17 +10,17 @@
                     </ion-button>
                     <ion-button v-if="isTalking && isRecording" @click="pauseTalk()">
                         <ion-icon :icon="pauseCircle" aria-hidden="true" size="large"></ion-icon>
-                    </ion-button>      
+                    </ion-button>
                     <ion-button v-if="!isTalking && isRecording" @click="continueTalk()">
                         <ion-icon :icon="playCircle" aria-hidden="true" size="large"></ion-icon>
-                    </ion-button>                                      
+                    </ion-button>
                     <ion-button v-if="isRecording" @click="endTalk()">
                         <ion-icon :icon="micOff" aria-hidden="true" size="large"></ion-icon>
                     </ion-button>
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
-        <ion-content :fullscreen="true">
+        <ion-content :fullscreen="true" ref="content">
 
             <!-- <router-link :to="{ path: '/chats/' + chat['uuid'] }" v-for="(chat, chatIndex) in chatStore.chats"
                 v-bind:key="chat['uuid']">
@@ -28,10 +28,20 @@
                     {{ chatIndex }}. {{ chat['raw_message'] }}
                 </ion-item>
             </router-link> -->
+           
+            <ion-card v-for="(chat, chatIndex) in chatStore.chats" v-bind:key="chat['uuid']">
+                <ion-card-header>
+                    <ion-card-subtitle>
+                        Timestamp...
+                    </ion-card-subtitle>
+                </ion-card-header>
 
-            <ion-item lines="none" v-for="(chat, chatIndex) in chatStore.chats" v-bind:key="chat['uuid']">
-                {{ chatIndex }}. {{ chat['raw_message'] }}
-            </ion-item>
+                <ion-card-content>
+                    what you said... 
+                    <br/><br/><br/>
+                    what sophy said...
+                </ion-card-content>
+            </ion-card>
 
         </ion-content>
     </ion-page>
@@ -75,6 +85,7 @@ export default defineComponent({
 
     mounted() {
         this.chats = this.chatStore.chats;
+        this.$refs.content.$el.scrollToBottom(500);
     },
 
     methods: {

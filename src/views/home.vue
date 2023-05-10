@@ -13,14 +13,10 @@
                         <ion-card>
                             <ion-card-header>
                                 <ion-card-title>
-                                    cardTitle
+                                    {{ recordStore.noOfRecords }}
                                 </ion-card-title>
-                                <ion-card-subtitle>cardSubtitle</ion-card-subtitle>
+                                <ion-card-subtitle>No. of records</ion-card-subtitle>
                             </ion-card-header>
-
-                            <ion-card-content>
-                                content
-                            </ion-card-content>
 
 
                         </ion-card>
@@ -29,14 +25,10 @@
                         <ion-card>
                             <ion-card-header>
                                 <ion-card-title>
-                                    cardTitle
+                                    {{ chatStore.noOfChats }}
                                 </ion-card-title>
-                                <ion-card-subtitle>cardSubtitle</ion-card-subtitle>
+                                <ion-card-subtitle>No. of conversations</ion-card-subtitle>
                             </ion-card-header>
-
-                            <ion-card-content>
-                                content
-                            </ion-card-content>
 
 
                         </ion-card>
@@ -47,13 +39,25 @@
                     <ion-col>
                         <ion-card>
                             <ion-card-header>
-                                <ion-card-title>
-                                    Chat with Sophy
-                                </ion-card-title>
+                                <ion-card-subtitle>Sophy</ion-card-subtitle>
                             </ion-card-header>
 
                             <ion-card-content>
-                                <ion-textarea label="Regular textarea" placeholder="Type something here"></ion-textarea>
+                                {{ responseSophyChat }}
+
+                                <br/>
+                                {{ responseSophyTime }}
+                            </ion-card-content>
+                        </ion-card>
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-subtitle>
+                                    Chat with Sophy
+                                </ion-card-subtitle>
+                            </ion-card-header>
+
+                            <ion-card-content>
+                                <ion-textarea label="Regular textarea" v-model="requestSophy"></ion-textarea>
                                 <ion-button @click="chatSophy()">
                                     <ion-icon :icon="chatbubble" size="large" />
                                     Chat with Sophy
@@ -73,13 +77,16 @@
 <script lang="ts">
 import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-    IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent
+    IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent,
+    IonTextarea, IonButton, IonIcon
 } from '@ionic/vue';
 import { chatbubble } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useChatStore } from "../stores/chat";
-import { VoiceRecorder, VoiceRecorderPlugin, RecordingData, GenericResponse, CurrentRecordingStatus } from 'capacitor-voice-recorder';
+import { useRecordStore } from "../stores/record";
+
+//import { VoiceRecorder, VoiceRecorderPlugin, RecordingData, GenericResponse, CurrentRecordingStatus } from 'capacitor-voice-recorder';
 
 
 export default defineComponent({
@@ -87,21 +94,28 @@ export default defineComponent({
 
     components: {
         IonPage, IonHeader, IonToolbar, IonContent, IonTitle,
-        IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent
+        IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent,
+        IonTextarea, IonButton, IonIcon
     },
 
     data() {
+        let requestSophy = 'Hello Sophy, how are you?';
+        let responseSophyChat = 'Hello!'
+        let responseSophyTime = Math.floor(Date.now() / 1000)
+
         return {
             chatbubble,
             chats: [],
+            requestSophy, responseSophyChat, responseSophyTime
         }
     },
 
     setup() {
         const authStore = useAuthStore();
         const chatStore = useChatStore();
+        const recordStore = useRecordStore();
         return {
-            authStore, chatStore
+            authStore, chatStore, recordStore
         };
     },
 
@@ -128,7 +142,7 @@ export default defineComponent({
         },
 
         chatSophy() {
-            console.log('');
+            console.log('chat: ', this.requestSophy);
         }
     }
 });

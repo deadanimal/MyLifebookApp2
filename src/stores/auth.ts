@@ -23,6 +23,7 @@ export const useAuthStore = defineStore({
   }),
 
   actions: {
+
     async login(email: string, password: string) {
       console.log("Authentication - Login");
       this.loading = true;
@@ -101,5 +102,34 @@ export const useAuthStore = defineStore({
         this.loading = false;        
       }
     },
+
+    async changePassword(oldPassword: string, newPassword: string) {
+      console.log("Authentication - Change Password");
+      this.loading = true;      
+      try {
+        const options = {
+          method: "POST",
+          url: "https://memoir.my/api/change-password",
+          headers: {
+            Authorization: "Bearer " + this.userToken,
+          },
+          data: {
+            oldPassword: oldPassword,
+            newPassword: newPassword,
+          }
+    
+        };
+
+        await axios.request(options).then((response) => {
+          console.log("Response: ", response);
+
+        });
+      } catch (error: any) {
+        console.log("Error: ", error);
+        this.error = error;
+      } finally {
+        this.loading = false;        
+      }      
+    }
   },
 });

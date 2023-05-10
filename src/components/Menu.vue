@@ -22,10 +22,10 @@
                     <ion-label>Chat</ion-label>
                 </ion-tab-button>
 
-                <ion-tab-button tab="tab4" href="/videos">
+                <!-- <ion-tab-button tab="tab4" href="/videos">
                     <ion-icon :icon="image" />
                     <ion-label>Image</ion-label>
-                </ion-tab-button>
+                </ion-tab-button> -->
 
                 <ion-tab-button tab="tab5" href="/profile">
                     <ion-icon :icon="person" />

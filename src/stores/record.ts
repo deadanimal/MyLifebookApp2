@@ -13,6 +13,7 @@ export const useRecordStore = defineStore({
 
     records: useStorage("records", []),
     record: useStorage("record", null),
+    noOfRecords: useStorage("noOfRecords", 0),
   }),
 
   actions: {
