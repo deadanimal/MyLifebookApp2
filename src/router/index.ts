@@ -1,3 +1,4 @@
+import { App, URLOpenListenerEvent } from '@capacitor/app';
 import { createRouter, createWebHistory } from "@ionic/vue-router";
 import { RouteRecordRaw } from "vue-router";
 
@@ -86,6 +87,19 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+App.addListener('appUrlOpen', function (event: URLOpenListenerEvent) {
+  // Example url: https://beerswift.app/tabs/tabs2
+  // slug = /tabs/tabs2
+  const slug = event.url.split('.app').pop();
+
+  // We only push to the route if there is a slug present
+  if (slug) {
+    router.push({
+      path: slug,
+    });
+  }
 });
 
 export default router;

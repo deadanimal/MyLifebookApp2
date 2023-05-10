@@ -4,9 +4,8 @@
             <ion-toolbar>
                 <ion-title>Record</ion-title>
                 <ion-buttons slot="end">
-                    <ion-button>
-                        <ion-icon :icon="cloudUpload" aria-hidden="true"></ion-icon>
-
+                    <ion-button @click="uploadRecord()">
+                        <ion-icon :icon="cloudUpload" aria-hidden="true" size="large"></ion-icon>
                     </ion-button>
                 </ion-buttons>                
             </ion-toolbar>
@@ -19,6 +18,8 @@
                     {{ record }}
                 </ion-item>
             </router-link>            
+
+            {{ uploadClicked }}
 
         </ion-content>
     </ion-page>
@@ -43,9 +44,11 @@ export default defineComponent({
     },
 
     data() {
+        let uploadClicked =  '';
         return {
             cloudUpload,
             records: [],
+            uploadClicked
         }
     },
 
@@ -62,6 +65,12 @@ export default defineComponent({
     methods: {
         listRecords() {
             this.recordStore.listRecords();
+        },
+
+        uploadRecord() {
+            console.log('uploadRecord');
+            let timestamp = String(Math.floor(Date.now() / 1000));
+            this.uploadClicked = timestamp;
         },
     }
 });

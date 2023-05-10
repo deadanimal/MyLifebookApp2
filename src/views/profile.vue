@@ -4,29 +4,49 @@
         <ion-header>
             <ion-toolbar>
                 <ion-title>Profile</ion-title>
-                <!-- <ion-buttons slot="start">
-                    <ion-button>
-                        Home
+                <ion-buttons slot="end">
+                    <ion-button @click="logout()">
+                        <ion-icon :icon="logOut" size="large" />
                     </ion-button>
                 </ion-buttons>
-                <ion-buttons slot="end">
-                    <ion-button href="/login">
-                        <ion-icon :icon="exitOutline" size="large" />
-                    </ion-button>
-                </ion-buttons> -->
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
-            profile picture: show and upload <br/>
-            name: {{ authStore.name }} <br/>
-            email: {{ authStore.email }} <br/>
-            username: {{ authStore.username }} <br/>
-            change password <br/>
-            show billings <br />
 
-            <ion-button @click="logout()">Log Out</ion-button>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-title>
+                                    <ion-avatar>
+                                        <img alt="Silhouette of a person's head"
+                                            src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                                    </ion-avatar>
+                                    {{ authStore.name }}
+                                </ion-card-title>
+                                <ion-card-subtitle>{{ authStore.email }}</ion-card-subtitle>
+                            </ion-card-header>
 
-            <ion-button @click="goToBilling()">Billing</ion-button>
+                            <ion-card-content>
+                                <ion-item>
+                                    <ion-input label="Old Password" placeholder="Old Password" type="password" value="oldPassword"></ion-input>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-input label="New Password" placeholder="New Password" type="password" value="newPassword"></ion-input>
+                                </ion-item>
+                                <ion-button @click="changePassword()">Change Password</ion-button>
+                            </ion-card-content>
+
+                            <ion-card-content>
+                                <ion-button color="secondary" @click="uploadPicture()">Upload Picture</ion-button>
+                                <ion-button color="secondary" @click="goToBilling()">Invoice</ion-button>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>            
+
 
         </ion-content>
     </ion-page>
@@ -34,8 +54,11 @@
   
 <script lang="ts">
 /* eslint-disable */
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/vue';
-import { exitOutline } from 'ionicons/icons';
+import {
+    IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton,
+    IonIcon, IonButtons
+} from '@ionic/vue';
+import { logOut } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useRouter } from 'vue-router';
@@ -46,24 +69,25 @@ export default defineComponent({
     name: 'ProfileView',
 
     components: {
-        IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonButton
+        IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonButton,
+        IonIcon, IonButtons
     },
 
     data() {
         return {
-            
+            logOut,
         }
     },
 
     setup() {
         const authStore = useAuthStore();
         const router = useRouter();
-        return { authStore, router };    
-        
+        return { authStore, router };
+
     },
 
     mounted() {
-        
+
     },
 
     methods: {
@@ -71,14 +95,22 @@ export default defineComponent({
 
         logout() {
             this.router.push("/login");
-            this.authStore.logout();            
+            this.authStore.logout();
         },
 
         goToBilling() {
             const userToken = this.authStore.userToken;
-            const url = 'https://memoir.my/billing-from-mobile?token=' + userToken; 
+            const url = 'https://memoir.my/billing-from-mobile?token=' + userToken;
             Browser.open({ url: url });
-        }
+        },
+
+        changePassword() {
+            console.log('');
+        },
+
+        uploadPicture() {
+            console.log('');
+        },
     }
 });
 

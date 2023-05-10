@@ -90,7 +90,6 @@ export const useAuthStore = defineStore({
 
             this.name = "";
             this.username = "";
-            this.email = "";
           }
         });
       } catch (error: any) {

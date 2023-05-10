@@ -6,8 +6,43 @@
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
-            list of asks <br/>
-            list of records <br/>
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-title>
+                                    cardTitle
+                                </ion-card-title>
+                                <ion-card-subtitle>cardSubtitle</ion-card-subtitle>
+                            </ion-card-header>
+
+                            <ion-card-content>
+                                content
+                            </ion-card-content>
+
+
+                        </ion-card>
+                    </ion-col>
+                    <ion-col>
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-title>
+                                    cardTitle
+                                </ion-card-title>
+                                <ion-card-subtitle>cardSubtitle</ion-card-subtitle>
+                            </ion-card-header>
+
+                            <ion-card-content>
+                                content
+                            </ion-card-content>
+
+
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </ion-content>
     </ion-page>
 </template>

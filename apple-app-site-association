@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "76JX3HQE64.my.memoir.app",
+        "paths": ["*"]
+      }
+    ]
+  }
+}

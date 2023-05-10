@@ -5,10 +5,12 @@
             <ion-toolbar>
                 <ion-title>Chat with Sophy</ion-title>
                 <ion-buttons slot="end">
-                    <ion-button>
-                        <ion-icon :icon="mic" aria-hidden="true"></ion-icon>
-
+                    <ion-button @click="startTalk()">
+                        <ion-icon :icon="mic" aria-hidden="true" size="large"></ion-icon>
                     </ion-button>
+                    <ion-button @click="endTalk()">
+                        <ion-icon :icon="micOff" aria-hidden="true" size="large"></ion-icon>
+                    </ion-button>                    
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
@@ -42,7 +44,7 @@ import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonItem, IonLabel,
     IonTextarea
 } from '@ionic/vue';
-import { mic } from 'ionicons/icons';
+import { mic, micOff } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useChatStore } from "../stores/chat";
 import { VoiceRecorder, VoiceRecorderPlugin, RecordingData, GenericResponse, CurrentRecordingStatus } from 'capacitor-voice-recorder';
@@ -56,9 +58,11 @@ export default defineComponent({
     },
 
     data() {
+        let isTalking: boolean = false;
         return {
-            mic,
+            mic, micOff,
             chats: [],
+            isTalking
         }
     },
 
@@ -77,6 +81,14 @@ export default defineComponent({
         listChats() {
             this.chatStore.listChats();
         },
+
+        startTalk() {
+            this.isTalking = true;
+        },
+
+        endTalk() {
+            this.isTalking = false;
+        },        
     }
 });
 

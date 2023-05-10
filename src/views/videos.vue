@@ -5,10 +5,10 @@
                 <ion-title>Media</ion-title>
                 <ion-buttons slot="end">
                     <ion-button>
-                        <ion-icon :icon="cloudUpload" aria-hidden="true"></ion-icon>
+                        <ion-icon :icon="cloudUpload" aria-hidden="true" size="large"></ion-icon>
                     </ion-button>
                     <ion-button>
-                        <ion-icon :icon="videocam" aria-hidden="true"></ion-icon>
+                        <ion-icon :icon="videocam" aria-hidden="true" size="large"></ion-icon>
                     </ion-button>                    
                 </ion-buttons>                    
             </ion-toolbar>

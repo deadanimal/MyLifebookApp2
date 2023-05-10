@@ -77,7 +77,7 @@ const { handleSubmit } = useForm<Model>({
     validationSchema: schema,
     validateOnMount: false,
     initialValues: {
-        email: 'user@email.com',
+        email: auth.email,
         password: 'pass12345678'
     }
 });
