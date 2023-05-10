@@ -4,9 +4,14 @@
         <ion-header>
             <ion-toolbar>
                 <ion-title>Profile</ion-title>
-                <ion-buttons slot="end">
+                <ion-buttons slot="start">
                     <ion-button @click="logout()">
                         <ion-icon :icon="logOut" size="large" />
+                    </ion-button>
+                </ion-buttons>                
+                <ion-buttons slot="end">
+                    <ion-button @click="askHelp()">
+                        <ion-icon :icon="help" size="large" />
                     </ion-button>
                 </ion-buttons>
             </ion-toolbar>
@@ -58,7 +63,7 @@ import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton,
     IonIcon, IonButtons
 } from '@ionic/vue';
-import { logOut } from 'ionicons/icons';
+import { logOut, help } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useRouter } from 'vue-router';
@@ -75,7 +80,7 @@ export default defineComponent({
 
     data() {
         return {
-            logOut,
+            logOut, help
         }
     },
 
@@ -105,12 +110,16 @@ export default defineComponent({
         },
 
         changePassword() {
-            console.log('');
+            console.log('changePassword');
         },
 
         uploadPicture() {
-            console.log('');
+            console.log('uploadPicture');
         },
+
+        askHelp() {
+            console.log('askHelp');
+        }
     }
 });
 
