@@ -33,10 +33,6 @@
                 {{ chatIndex }}. {{ chat['raw_message'] }}
             </ion-item>
 
-            <ion-item>
-                <ion-textarea label="Regular textarea" placeholder="Type something here"></ion-textarea>
-            </ion-item>
-
         </ion-content>
     </ion-page>
 </template>

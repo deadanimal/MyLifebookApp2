@@ -42,16 +42,40 @@
                         </ion-card>
                     </ion-col>
                 </ion-row>
+
+                <ion-row>
+                    <ion-col>
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-title>
+                                    Chat with Sophy
+                                </ion-card-title>
+                            </ion-card-header>
+
+                            <ion-card-content>
+                                <ion-textarea label="Regular textarea" placeholder="Type something here"></ion-textarea>
+                                <ion-button @click="chatSophy()">
+                                    <ion-icon :icon="chatbubble" size="large" />
+                                    Chat with Sophy
+                                </ion-button>
+                            </ion-card-content>
+
+
+
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
             </ion-grid>
         </ion-content>
     </ion-page>
 </template>
   
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
+import {
+    IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
     IonGrid, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent
- } from '@ionic/vue';
-import { exitOutline } from 'ionicons/icons';
+} from '@ionic/vue';
+import { chatbubble } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useChatStore } from "../stores/chat";
@@ -68,7 +92,7 @@ export default defineComponent({
 
     data() {
         return {
-            exitOutline,
+            chatbubble,
             chats: [],
         }
     },
@@ -93,13 +117,18 @@ export default defineComponent({
         },
 
         checkCanRecordAudio() {
+            this.authStore.canRecordAudio = false;
 
-            VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => {
-                if (result.value == true) {
-                    this.authStore.canRecordAudio = true;
-                }
-            })
+            // VoiceRecorder.requestAudioRecordingPermission().then((result: GenericResponse) => {
+            //     if (result.value == true) {
+            //         this.authStore.canRecordAudio = true;
+            //     }
+            // })
 
+        },
+
+        chatSophy() {
+            console.log('');
         }
     }
 });

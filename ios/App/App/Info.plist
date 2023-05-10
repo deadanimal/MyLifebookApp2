@@ -24,6 +24,14 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Convert voice recording into note and instructions</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To capture OCR images and convert into text and note</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>To edit and change images and convert to and back from note</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To be able to upload OCR images</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

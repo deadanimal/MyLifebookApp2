@@ -24,7 +24,7 @@
 
                 <ion-tab-button tab="tab4" href="/videos">
                     <ion-icon :icon="image" />
-                    <ion-label>Video</ion-label>
+                    <ion-label>Image</ion-label>
                 </ion-tab-button>
 
                 <ion-tab-button tab="tab5" href="/profile">

@@ -4,22 +4,23 @@
             <ion-toolbar>
                 <ion-title>Media</ion-title>
                 <ion-buttons slot="end">
-                    <ion-button>
+                    <!-- <ion-button>
                         <ion-icon :icon="cloudUpload" aria-hidden="true" size="large"></ion-icon>
-                    </ion-button>
-                    <ion-button>
+                    </ion-button> -->
+                    <ion-button @click="openCamera()">
                         <ion-icon :icon="videocam" aria-hidden="true" size="large"></ion-icon>
-                    </ion-button>                    
-                </ion-buttons>                    
+                    </ion-button>
+                </ion-buttons>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
 
-            <router-link :to="{path: '/videos/' + video['uuid']}" v-for="(video, videoIndex) in videoStore.videos" v-bind:key="video['uuid']">
+            <router-link :to="{ path: '/videos/' + video['uuid'] }" v-for="(video, videoIndex) in videoStore.videos"
+                v-bind:key="video['uuid']">
                 <ion-item href="#">
                     {{ videoIndex }}. {{ video['raw_message'] }} {{ video }}
                 </ion-item>
-            </router-link>            
+            </router-link>
 
         </ion-content>
     </ion-page>
@@ -27,9 +28,12 @@
   
   
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem,
+import {
+    IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem,
     IonButtons, IonButton, IonIcon
- } from '@ionic/vue';
+} from '@ionic/vue';
+import { Camera, CameraResultType } from '@capacitor/camera';
+
 import { videocam, cloudUpload } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useVideoStore } from "../stores/video";
@@ -63,6 +67,23 @@ export default defineComponent({
         listVideos() {
             this.videoStore.listVideos();
         },
+
+        async openCamera() {
+            console.log('openCamera')
+            const image = await Camera.getPhoto({
+                quality: 90,
+                allowEditing: true,
+                resultType: CameraResultType.Uri
+            });
+
+            // image.webPath will contain a path that can be set as an image src.
+            // You can access the original file using image.path, which can be
+            // passed to the Filesystem API to read the raw data of the image,
+            // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
+            var imageUrl = image.webPath;
+
+            console.log(imageUrl)
+        }
     }
 });
 

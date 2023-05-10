@@ -8,7 +8,7 @@
                             <ion-card class="bg-transparent border-none shadow-none">
                                 <ion-img src="assets/img/logo.png" class="w-1/2 mx-auto rounded-full" />
                                 <ion-card-header class="text-center">
-                                    <ion-card-title>Login</ion-card-title>
+                                    <ion-card-title></ion-card-title>
                                     <p class="mt-1">Please enter email and password to access your account</p>
                                 </ion-card-header>
                                 <ion-card-content class="my-12">
@@ -43,7 +43,7 @@
                                     </form>
 
                                     <div class="flex justify-center mt-5">
-                                        <p class="text-sm">Do not have an account? <a href="/register">Register</a>
+                                        <p class="text-sm" >Do not have an account? Register now.
                                         </p>
                                     </div>
                                 </ion-card-content>
@@ -65,6 +65,8 @@ import { useForm, useField } from 'vee-validate';
 import * as yup from 'yup';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
+import { Browser } from '@capacitor/browser';
+
 
 type Model = {
     email: string;
@@ -97,8 +99,6 @@ function onInvalidSubmit({ values, errors, results }: { values: any, errors: any
 const onSubmit = handleSubmit((values) => {
     auth.login(values.email, values.password);    
 }, onInvalidSubmit);
-
-
 
 
 </script>
