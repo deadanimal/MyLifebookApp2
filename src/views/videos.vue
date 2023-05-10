@@ -28,11 +28,10 @@
   
 <script lang="ts">
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem,
-    IonButtons, IonButton
+    IonButtons, IonButton, IonIcon
  } from '@ionic/vue';
 import { videocam, cloudUpload } from 'ionicons/icons';
 import { defineComponent } from 'vue';
-import { useAuthStore } from "../stores/auth";
 import { useVideoStore } from "../stores/video";
 
 export default defineComponent({
@@ -40,7 +39,7 @@ export default defineComponent({
 
     components: {
         IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonItem,
-        IonButtons, IonButton
+        IonButtons, IonButton, IonIcon
     },
 
     data() {

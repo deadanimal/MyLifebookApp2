@@ -15,7 +15,8 @@
                                     <form @submit="onSubmit" :validation-schema="schema">
                                         <ion-row>
                                             <ion-col class="p-3">
-                                                <ion-input class="w-100" clear-input type="text" placeholder="Email"
+                                                <ion-label>Email</ion-label>
+                                                <ion-input class="w-100" clear-input type="text"
                                                     v-model="email">
 
                                                     <slot name="start">
@@ -27,7 +28,8 @@
                                         </ion-row>
                                         <ion-row>
                                             <ion-col class="p-3">
-                                                <ion-input clear-input block type="password" placeholder="Password"
+                                                <ion-label>Password</ion-label>
+                                                <ion-input clear-input block type="password"
                                                     v-model="password">
                                                     <slot name="start">
                                                         <ion-icon :icon="keyOutline" size="large" class="mr-2" />
@@ -55,7 +57,8 @@
 </template>
 
 <script lang="ts" setup name="LoginView">
-import { IonGrid, IonContent, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonInput, IonButton, IonIcon, IonImg } from '@ionic/vue';
+import { IonGrid, IonContent, IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardContent, 
+    IonItem, IonInput, IonButton, IonIcon, IonImg, IonLabel } from '@ionic/vue';
 import { mailOutline, keyOutline } from 'ionicons/icons';
 import { useRouter } from 'vue-router';
 import { useForm, useField } from 'vee-validate';
@@ -78,7 +81,7 @@ const { handleSubmit } = useForm<Model>({
     validateOnMount: false,
     initialValues: {
         email: auth.email,
-        password: 'pass12345678'
+        password: ''
     }
 });
 

@@ -1,51 +1,54 @@
 <template>
-    <ion-tabs>
-        <ion-router-outlet>
+    <ion-page>
+        <ion-tabs>
+            <ion-router-outlet>
 
-    
 
-        </ion-router-outlet>
-        <ion-tab-bar slot="bottom">
-            <ion-tab-button tab="tab1" href="/home">
-                <ion-icon :icon="home" />
-                <ion-label>Home</ion-label>
-            </ion-tab-button>
 
-            <ion-tab-button tab="tab2" href="/records">
-                <ion-icon :icon="documents" />
-                <ion-label>Record</ion-label>
-            </ion-tab-button>
+            </ion-router-outlet>
+            <ion-tab-bar slot="bottom">
+                <ion-tab-button tab="tab1" href="/home">
+                    <ion-icon :icon="home" />
+                    <ion-label>Home</ion-label>
+                </ion-tab-button>
 
-            <ion-tab-button tab="tab3" href="/chats">
-                <ion-icon :icon="chatbubbles" />
-                <ion-label>Chat</ion-label>
-            </ion-tab-button>
+                <ion-tab-button tab="tab2" href="/records">
+                    <ion-icon :icon="documents" />
+                    <ion-label>Record</ion-label>
+                </ion-tab-button>
 
-            <ion-tab-button tab="tab4" href="/videos">
-                <ion-icon :icon="image" />
-                <ion-label>Video</ion-label>
-            </ion-tab-button>            
+                <ion-tab-button tab="tab3" href="/chats">
+                    <ion-icon :icon="chatbubbles" />
+                    <ion-label>Chat</ion-label>
+                </ion-tab-button>
 
-            <ion-tab-button tab="tab5" href="/profile">
-                <ion-icon :icon="person" />
-                <ion-label>Profile</ion-label>
-            </ion-tab-button>
-        </ion-tab-bar>
-    </ion-tabs>
+                <ion-tab-button tab="tab4" href="/videos">
+                    <ion-icon :icon="image" />
+                    <ion-label>Video</ion-label>
+                </ion-tab-button>
 
+                <ion-tab-button tab="tab5" href="/profile">
+                    <ion-icon :icon="person" />
+                    <ion-label>Profile</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
+    </ion-page>
 </template>
   
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonRouterOutlet } from '@ionic/vue';
+import { IonPage,IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonRouterOutlet } from '@ionic/vue';
 import { ellipse, square, triangle, home, documents, chatbubbles, person, briefcase, search, image } from 'ionicons/icons';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 
 
 export default defineComponent({
     name: 'MenuComponent',
-    components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonRouterOutlet },
+    components: { IonPage, IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonRouterOutlet },
     setup() {
         return {
             ellipse,
@@ -81,7 +84,11 @@ export default defineComponent({
         },
 
         onToggle() {
-            this.isModalVisible = ! this.isModalVisible;
+            this.isModalVisible = !this.isModalVisible;
+        },
+
+        goTo(link: string) {
+            router.push(link);
         }
     }
 });

@@ -63,14 +63,11 @@ export default defineComponent({
     },
 
     mounted() {
-        this.listRecords();
         this.records = this.recordStore.records;
     },
 
     methods: {
-        listRecords() {
-            this.recordStore.listRecords();
-        },
+
 
         async uploadRecord() {
             console.log('uploadRecord');

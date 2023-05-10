@@ -58,10 +58,12 @@
 </template>
   
 <script lang="ts">
-/* eslint-disable */
+
 import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton,
-    IonIcon, IonButtons
+    IonIcon, IonButtons,
+    IonGrid, IonRow, IonCol, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle,
+    IonAvatar, IonItem, IonCardContent, IonInput
 } from '@ionic/vue';
 import { logOut, help } from 'ionicons/icons';
 import { defineComponent } from 'vue';
@@ -75,7 +77,9 @@ export default defineComponent({
 
     components: {
         IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonButton,
-        IonIcon, IonButtons
+        IonIcon, IonButtons,
+        IonGrid, IonRow, IonCol, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle,
+        IonAvatar, IonItem, IonCardContent, IonInput
     },
 
     data() {
@@ -92,7 +96,7 @@ export default defineComponent({
     },
 
     mounted() {
-
+        console.log('profile mounted');
     },
 
     methods: {
@@ -104,6 +108,7 @@ export default defineComponent({
         },
 
         goToBilling() {
+            console.log('goToBilling');
             const userToken = this.authStore.userToken;
             const url = 'https://memoir.my/billing-from-mobile?token=' + userToken;
             Browser.open({ url: url });
