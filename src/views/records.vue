@@ -7,17 +7,18 @@
                     <ion-button @click="uploadRecord()">
                         <ion-icon :icon="cloudUpload" aria-hidden="true" size="large"></ion-icon>
                     </ion-button>
-                </ion-buttons>                
+                </ion-buttons>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
 
-            <router-link :to="{path: '/records/' + record['uuid']}" v-for="(record, recordIndex) in recordStore.records" v-bind:key="record['uuid']">
+            <router-link :to="{ path: '/records/' + record['uuid'] }" v-for="(record, recordIndex) in recordStore.records"
+                v-bind:key="record['uuid']">
                 <ion-item lines="none">
-                    {{ recordIndex }} <br/> 
+                    {{ recordIndex }} <br />
                     {{ record }}
                 </ion-item>
-            </router-link>            
+            </router-link>
 
             {{ uploadClicked }}
 
@@ -27,13 +28,16 @@
   
   
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem,
+import {
+    IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem,
     IonButton, IonButtons, IonIcon
- } from '@ionic/vue';
+} from '@ionic/vue';
 import { cloudUpload } from 'ionicons/icons';
 import { defineComponent } from 'vue';
 import { useAuthStore } from "../stores/auth";
 import { useRecordStore } from "../stores/record";
+import { FilePicker } from '@capawesome/capacitor-file-picker';
+
 
 export default defineComponent({
     name: 'RecordsView',
@@ -44,7 +48,7 @@ export default defineComponent({
     },
 
     data() {
-        let uploadClicked =  '';
+        let uploadClicked = '';
         return {
             cloudUpload,
             records: [],
@@ -67,10 +71,18 @@ export default defineComponent({
             this.recordStore.listRecords();
         },
 
-        uploadRecord() {
+        async uploadRecord() {
             console.log('uploadRecord');
             let timestamp = String(Math.floor(Date.now() / 1000));
             this.uploadClicked = timestamp;
+
+            FilePicker.pickFiles({
+                types: ['image/png'],
+                multiple: true,
+            }).then((lol)=> {
+                console.log(lol)
+            });
+
         },
     }
 });

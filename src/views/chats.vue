@@ -10,7 +10,7 @@
                     </ion-button>
                     <ion-button @click="endTalk()">
                         <ion-icon :icon="micOff" aria-hidden="true" size="large"></ion-icon>
-                    </ion-button>                    
+                    </ion-button>
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
@@ -23,10 +23,7 @@
                 </ion-item>
             </router-link> -->
 
-            <ion-item 
-                lines="none" 
-                v-for="(chat, chatIndex) in chatStore.chats"
-                v-bind:key="chat['uuid']">
+            <ion-item lines="none" v-for="(chat, chatIndex) in chatStore.chats" v-bind:key="chat['uuid']">
                 {{ chatIndex }}. {{ chat['raw_message'] }}
             </ion-item>
 
@@ -84,11 +81,17 @@ export default defineComponent({
 
         startTalk() {
             this.isTalking = true;
+            VoiceRecorder.startRecording()
+                .then((result: GenericResponse) => console.log(result.value))
+                .catch(error => console.log(error))
         },
 
         endTalk() {
             this.isTalking = false;
-        },        
+            VoiceRecorder.stopRecording()
+                .then((result: RecordingData) => console.log(result.value))
+                .catch(error => console.log(error))
+        },
     }
 });
 

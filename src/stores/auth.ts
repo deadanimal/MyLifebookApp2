@@ -18,6 +18,8 @@ export const useAuthStore = defineStore({
     name: useStorage("name", ""),
     username: useStorage("username", ""),
     email: useStorage("email", ""),
+
+    canRecordAudio: useStorage("canRecordAudio", false),
   }),
 
   actions: {
