@@ -14,8 +14,6 @@ PODS:
     - Capacitor
   - CapacitorStatusBar (5.0.2):
     - Capacitor
-  - CapacitorVoiceRecorder (4.0.2):
-    - Capacitor
   - CapawesomeCapacitorFilePicker (5.0.0):
     - Capacitor
   - CordovaPlugins (5.0.2):
@@ -30,7 +28,6 @@ DEPENDENCIES:
   - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
   - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
-  - CapacitorVoiceRecorder (from `../../node_modules/capacitor-voice-recorder`)
   - "CapawesomeCapacitorFilePicker (from `../../node_modules/@capawesome/capacitor-file-picker`)"
   - CordovaPlugins (from `../capacitor-cordova-ios-plugins`)
 
@@ -51,8 +48,6 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/keyboard"
   CapacitorStatusBar:
     :path: "../../node_modules/@capacitor/status-bar"
-  CapacitorVoiceRecorder:
-    :path: "../../node_modules/capacitor-voice-recorder"
   CapawesomeCapacitorFilePicker:
     :path: "../../node_modules/@capawesome/capacitor-file-picker"
   CordovaPlugins:
@@ -67,10 +62,9 @@ SPEC CHECKSUMS:
   CapacitorHaptics: 864585542a435bd41eaabf7f30d9ff5ec03024d3
   CapacitorKeyboard: e628d4e66d621c69e449945ebabded17c5b9c2e8
   CapacitorStatusBar: 48f2899f6846cc7d8431b251ebfc58e1c10e3d58
-  CapacitorVoiceRecorder: 470c51d2814b32913c21f804c4699a3ebf2a6249
   CapawesomeCapacitorFilePicker: ec211560d209c2efa0e47dad3308bf497e6ce388
   CordovaPlugins: 49d72cc9c9f868a1af161aae2b1ad0d076d316f5
 
-PODFILE CHECKSUM: fcbd0f43528b2696ac572889420f7dbec7a87058
+PODFILE CHECKSUM: 0f009db5afc29ab6ecf8368b68c6e1a8075fa082
 
 COCOAPODS: 1.11.3
