@@ -4,14 +4,10 @@
         <ion-header>
             <ion-toolbar>
                 <ion-title>Profile</ion-title>
-                <ion-buttons slot="start">
+     
+                <ion-buttons slot="end">
                     <ion-button @click="logout()">
                         <ion-icon :icon="logOut" size="large" />
-                    </ion-button>
-                </ion-buttons>
-                <ion-buttons slot="end">
-                    <ion-button @click="goToBilling()">
-                        <ion-icon :icon="card" size="large" />
                     </ion-button>
                 </ion-buttons>
             </ion-toolbar>
