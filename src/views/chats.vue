@@ -29,7 +29,7 @@
                 </ion-item>
             </router-link> -->
            
-            <ion-card v-for="(chat, chatIndex) in chatStore.chats" v-bind:key="chat['uuid']">
+            <ion-card v-for="(chat) in chatStore.chats" v-bind:key="chat['uuid']">
                 <ion-card-header>
                     <ion-card-subtitle>
                         Timestamp...
@@ -48,6 +48,7 @@
 </template>
   
 <script lang="ts">
+/* eslint-disable */
 import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonContent, IonItem,
     IonTextarea, IonIcon
@@ -85,7 +86,7 @@ export default defineComponent({
 
     mounted() {
         this.chats = this.chatStore.chats;
-        this.$refs.content.$el.scrollToBottom(500);
+        //this.$refs.content.$el.scrollToBottom(500);
     },
 
     methods: {

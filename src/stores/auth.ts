@@ -36,7 +36,6 @@ export const useAuthStore = defineStore({
           console.log("Response: ", response);
 
           if (response["data"]["token"]) {
-            console.log(response["data"]["token"]);
             this.isAuthenticated = true;
             this.userId = response["data"]["userId"];
             this.profileId = response["data"]["profileId"];
@@ -46,7 +45,6 @@ export const useAuthStore = defineStore({
             this.username = response["data"]["username"];
             this.email = response["data"]["email"];
 
-            console.log(router);
             router.push("/home");
           } else {
             console.log(response["data"]["error"]);
@@ -84,7 +82,6 @@ export const useAuthStore = defineStore({
           console.log("Response: ", response);
 
           if (response["data"]["status"] == "OK") {
-            localStorage.clear();
 
             this.isAuthenticated = false;
             this.userId = "";

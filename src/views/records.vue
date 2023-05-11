@@ -12,9 +12,24 @@
         </ion-header>
         <ion-content :fullscreen="true">
 
-            {{ recordStore.records }}
+            <ion-grid>
+                <ion-row v-for="(record, recordIndex) in recordStore.records" v-bind:key="record['uuid']">
+                    <ion-col>
+                        <ion-card>
+                            <ion-card-header>
+                                <ion-card-title>Card: {{ recordIndex }}</ion-card-title>
+                                <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+                            </ion-card-header>
 
-            <ion-list lines="full">
+                            <ion-card-content>
+                                {{record}}
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+            <!-- <ion-list lines="full">
                 <router-link :to="{ path: '/records/' + record['uuid'] }"
                     v-for="(record, recordIndex) in recordStore.records" v-bind:key="record['uuid']">
                     <ion-item lines="none">
@@ -22,7 +37,7 @@
                         {{ record }}
                     </ion-item>
                 </router-link>
-            </ion-list>
+            </ion-list> -->
 
 
 
@@ -35,8 +50,9 @@
   
 <script lang="ts">
 import {
-    IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonItem,
-    IonButton, IonButtons, IonIcon
+    IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
+    IonButton, IonButtons, IonIcon,
+    IonGrid, IonRow, IonCol,IonCard, IonCardContent, IonCardTitle, IonCardSubtitle, IonCardHeader
 } from '@ionic/vue';
 import { cloudUpload } from 'ionicons/icons';
 import { defineComponent } from 'vue';
@@ -50,8 +66,9 @@ export default defineComponent({
     name: 'RecordsView',
 
     components: {
-        IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonItem,
-        IonButton, IonButtons, IonIcon
+        IonPage, IonHeader, IonToolbar, IonContent, IonTitle,
+        IonButton, IonButtons, IonIcon,
+        IonGrid, IonRow, IonCol,IonCard, IonCardContent, IonCardTitle, IonCardSubtitle, IonCardHeader
     },
 
     data() {
@@ -69,7 +86,7 @@ export default defineComponent({
     },
 
     mounted() {
-        
+        console.log('Records mounted');
     },
 
     methods: {

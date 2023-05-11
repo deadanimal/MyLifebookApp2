@@ -119,16 +119,19 @@ export default defineComponent({
         };
     },
 
+    created() {
+        console.log('created');
+        this.chatStore.listChats();
+        this.recordStore.listRecords();
+    },
+
     mounted() {
-        this.listChats();
         this.chats = this.chatStore.chats;
         this.checkCanRecordAudio();
     },
 
     methods: {
-        listChats() {
-            this.chatStore.listChats();
-        },
+
 
         checkCanRecordAudio() {
             this.authStore.canRecordAudio = false;

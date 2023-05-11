@@ -69,7 +69,7 @@ import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton,
     IonIcon, IonButtons,
     IonGrid, IonRow, IonCol, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle,
-    IonAvatar, IonItem, IonCardContent, IonInput
+    IonItem, IonCardContent, IonInput
 } from '@ionic/vue';
 import { logOut, help, card } from 'ionicons/icons';
 import { defineComponent } from 'vue';
@@ -85,7 +85,7 @@ export default defineComponent({
         IonPage, IonHeader, IonToolbar, IonContent, IonTitle, IonButton,
         IonIcon, IonButtons,
         IonGrid, IonRow, IonCol, IonCard, IonCardSubtitle, IonCardHeader, IonCardTitle,
-        IonAvatar, IonItem, IonCardContent, IonInput
+        IonItem, IonCardContent, IonInput
     },
 
     data() {
